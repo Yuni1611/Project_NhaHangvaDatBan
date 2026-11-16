@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>@ViewBag.Title - FoodTable</title>
+
+    @Styles.Render("~/Content/css")
+
+    <style>
+        body {
+            background-color: #f7f2ec;
+            color: #30231d;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .food-navbar {
+            background-color: #642b1c;
+            box-shadow: 0 3px 14px rgba(50, 20, 10, .2);
+        }
+
+            .food-navbar .navbar-brand {
+                color: #fff;
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+
+            .food-navbar .nav-link {
+                color: #fff;
+            }
+
+                .food-navbar .nav-link:hover,
+                .food-navbar .nav-link:focus {
+                    color: #ffd9b4;
+                }
+            .food-navbar .nav-link {
+                color: #fff;
+                font-size: 1.15rem;
+            }
+
+        .page-content {
+            padding-top: 90px;
+            min-height: 75vh;
+        }
+
+        .site-footer {
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            color: #6c625c;
+            border-top: 1px solid #eadbcf;
+        }
+        .food-navbar .booking-link,
+        .food-navbar .account-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            padding: .5rem .8rem;
+            border-radius: .45rem;
+            text-decoration: none;
+        }
+
+        .food-navbar .booking-link {
+            color: #fff;
+            background: #a94321;
+            border: 1px solid #d47b60;
+        }
+
+            .food-navbar .booking-link:hover {
+                color: #fff;
+                background: #873317;
+            }
+
+
+        .food-navbar .account-link {
+            color: #fff;
+        }
+
+            .food-navbar .account-link:hover {
+                color: #ffd9b4;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top food-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                ♨ FoodTable
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Mở menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="@Url.Action("Index", "Home")#nha-hang">
+                            Nhà hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="@Url.Action("Index", "Home")#am-thuc">
+                            Ẩm thực
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="@Url.Action("Index", "Home")#dat-ban">
+                            Đặt bàn
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="@Url.Action("Index", "Home")#lien-he">
+                            Liên hệ
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link booking-link" href="#">
+                            <svg width="20" height="20" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                                <path d="M16 3v4M8 3v4M3 11h18"></path>
+                                <path d="m9 16 2 2 4-4"></path>
+                            </svg>
+                            Đặt chỗ của tôi
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link account-link" href="#">
+                            <svg width="20" height="20" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round"
+                                 aria-hidden="true">
+                                <circle cx="12" cy="8" r="4"></circle>
+                                <path d="M5 21a7 7 0 0 1 14 0"></path>
+                            </svg>
+                            Tài khoản
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container page-content">
+        @RenderBody()
+
+        <footer class="site-footer text-center" id="lien-he">
+            <p class="mb-1">
+                © @DateTime.Now.Year FoodTable
+            </p>
+            <p class="mb-0">
+                Khám phá nhà hàng, lựa chọn món ngon và đặt bàn dễ dàng.
+            </p>
+        </footer>
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/bootstrap.bundle.js")"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
