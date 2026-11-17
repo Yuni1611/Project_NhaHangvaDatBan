@@ -3,6 +3,7 @@
 }
 
 <style>
+    /* Banner trình chiếu lớn ở đầu trang */
     .hero-carousel {
         position: relative;
         height: 500px;
@@ -79,6 +80,7 @@
         }
     }
 
+    /* Tiêu đề các khu vực và thẻ nhà hàng */
     .section-title {
         margin: 2rem 0 1rem;
         color: #43271b;
@@ -134,6 +136,325 @@
         border-radius: 1rem;
     }
 
+    #dat-ban .section-title {
+        max-width: 1120px;
+        margin: 2rem auto 1rem;
+    }
+
+    .booking-form-panel {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        box-shadow: 0 8px 24px rgba(74, 43, 25, .08);
+    }
+
+    .booking-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem 1.5rem;
+    }
+
+    .booking-field {
+        min-width: 0;
+    }
+
+    .booking-field--full,
+    .booking-submit {
+        grid-column: 1 / -1;
+    }
+
+    .booking-form-grid .form-label {
+        margin-bottom: .45rem;
+        color: #43271b;
+        font-weight: 600;
+    }
+
+    .booking-form-grid .form-control {
+        width: 100%;
+        min-height: 48px;
+        border-radius: .65rem;
+    }
+
+    .booking-form-grid textarea.form-control {
+        min-height: 112px;
+        resize: vertical;
+    }
+
+    .booking-submit .btn {
+        min-height: 48px;
+        padding-inline: 1.5rem;
+        font-weight: 600;
+    }
+
+    @@media (max-width: 767.98px) {
+        .booking-form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .booking-field--full,
+        .booking-submit {
+            grid-column: auto;
+        }
+    }
+
+    /* Giao diện đặt bàn 3 bước */
+    .booking-experience {
+        display: grid;
+        grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
+        max-width: 1180px;
+        min-height: 650px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid #eadbcf;
+        border-radius: 1.25rem;
+        box-shadow: 0 12px 34px rgba(74, 43, 25, .12);
+    }
+
+    .booking-visual {
+        position: relative;
+        min-height: 650px;
+        overflow: hidden;
+        background: #3b2418;
+    }
+
+        .booking-visual img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .booking-visual::after {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background: linear-gradient(180deg, rgba(31, 18, 12, .05) 35%, rgba(31, 18, 12, .78) 100%);
+        }
+
+    .booking-visual-copy {
+        position: absolute;
+        z-index: 1;
+        right: 1.75rem;
+        bottom: 2rem;
+        left: 1.75rem;
+        color: #fff;
+    }
+
+        .booking-visual-copy h3 {
+            font-family: Georgia, serif;
+            font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+            font-weight: 700;
+        }
+
+    .booking-content {
+        min-width: 0;
+        padding: clamp(1.25rem, 3vw, 2.6rem);
+    }
+
+    .booking-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+        color: #43271b;
+        font-family: Georgia, serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .booking-heading {
+        margin: .45rem 0 1.6rem;
+        color: #43271b;
+        font-family: Georgia, serif;
+        font-size: clamp(1.65rem, 3vw, 2.25rem);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .booking-stepper {
+        position: relative;
+        margin: 0 0 1.8rem;
+    }
+
+    .booking-step-track {
+        position: absolute;
+        top: 16px;
+        right: 16.5%;
+        left: 16.5%;
+        height: 3px;
+        background: #eadbcf;
+    }
+
+    .booking-step-track-fill {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: #a94321;
+        transition: width .25s ease;
+    }
+
+    .booking-step-list {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .booking-step-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .45rem;
+        color: #76665d;
+        font-size: .88rem;
+        text-align: center;
+    }
+
+    .booking-step-dot {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 2px solid #eadbcf;
+        border-radius: 50%;
+        background: #fffaf6;
+        color: #6b5143;
+        font-weight: 700;
+        transition: all .2s ease;
+    }
+
+    .booking-step-indicator.is-active,
+    .booking-step-indicator.is-complete {
+        color: #a94321;
+        font-weight: 700;
+    }
+
+        .booking-step-indicator.is-active .booking-step-dot,
+        .booking-step-indicator.is-complete .booking-step-dot {
+            border-color: #a94321;
+            background: #a94321;
+            color: #fff;
+        }
+
+    .booking-step-panel h3 {
+        margin-bottom: 1rem;
+        color: #43271b;
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .booking-step-panel .form-label {
+        margin-bottom: .45rem;
+        color: #43271b;
+        font-weight: 600;
+    }
+
+    .booking-step-panel .form-control {
+        min-height: 48px;
+        border-color: #ddcfc4;
+        border-radius: .7rem;
+    }
+
+    .booking-step-panel textarea.form-control {
+        min-height: 105px;
+    }
+
+    .booking-time-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: .55rem;
+    }
+
+    .booking-time-slot {
+        min-height: 42px;
+        border: 1px solid #e7d8cc;
+        border-radius: .65rem;
+        background: #fffaf6;
+        color: #43271b;
+        transition: all .18s ease;
+    }
+
+        .booking-time-slot:hover,
+        .booking-time-slot.is-selected {
+            border-color: #a94321;
+            background: #a94321;
+            color: #fff;
+        }
+
+    .booking-step-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: .75rem;
+        margin-top: 1.5rem;
+    }
+
+        .booking-step-actions .btn {
+            min-height: 48px;
+            padding-inline: 1.25rem;
+            border-radius: .7rem;
+            font-weight: 600;
+        }
+
+    .booking-summary {
+        padding: 1.1rem 1.25rem;
+        border: 1px solid #eadbcf;
+        border-radius: .9rem;
+        background: #fffaf6;
+    }
+
+    .booking-summary-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: .65rem 0;
+        border-bottom: 1px solid #eadbcf;
+    }
+
+        .booking-summary-row:last-child {
+            border-bottom: 0;
+        }
+
+        .booking-summary-row span:first-child {
+            color: #76665d;
+        }
+
+        .booking-summary-row span:last-child {
+            color: #43271b;
+            font-weight: 600;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+    @@media (max-width: 767.98px) {
+        .booking-experience {
+            grid-template-columns: 1fr;
+        }
+
+        .booking-visual {
+            min-height: 250px;
+        }
+
+        .booking-content {
+            padding: 1.25rem;
+        }
+    }
+
+    @@media (max-width: 420px) {
+        .booking-time-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .booking-step-indicator {
+            font-size: .75rem;
+        }
+    }
+
+    /* Dòng thực đơn và các nút loại ẩm thực */
     .menu-row {
         padding: 1rem 0;
         border-bottom: 1px solid #eadbcf;
@@ -190,6 +511,7 @@
     }
 </style>
 
+@* Banner đầu trang với các ảnh tự chuyển. *@
 <section class="hero-carousel mb-4">
     <div id="heroCarousel"
          class="carousel slide hero-carousel-slides"
@@ -286,6 +608,7 @@
     </div>
 </section>
 
+@* Khu vực tìm kiếm và lọc danh sách nhà hàng. *@
 <section id="nha-hang">
     <h2 class="section-title">Tìm nhà hàng phù hợp</h2>
 
@@ -364,6 +687,7 @@
     <input type="hidden" id="cuisineFilter" value="" />
 
     <div id="am-thuc" class="mt-4">
+        @* Các biểu tượng giúp chọn nhanh loại ẩm thực. *@
         <h2 class="section-title">Khám phá theo loại ẩm thực</h2>
 
         <div class="cuisine-scroll">
@@ -403,6 +727,7 @@
         </div>
     </div>
 
+    @* Các thẻ nhà hàng; nút Xem chi tiết lấy dữ liệu từ từng thẻ. *@
     <h2 class="section-title">Nhà hàng nổi bật</h2>
 
     <div class="row g-4" id="restaurantList">
@@ -685,6 +1010,7 @@
     </p>
 </section>
 
+@* Khu vực hiển thị chi tiết nhà hàng được chọn. *@
 <section id="chi-tiet"
          class="mt-3 d-none"
          aria-live="polite"
@@ -728,83 +1054,180 @@
     </div>
 </section>
 
+@* Biểu mẫu đặt bàn chia thành ba bước. *@
 <section id="dat-ban" class="mt-5">
-    <h2 class="section-title">Gửi yêu cầu đặt bàn</h2>
-
-    <div class="booking-panel">
-        <div id="bookingMessage"
-             class="alert alert-success d-none"
-             role="alert">
-            Đã nhận thông tin mẫu. Hiện tại biểu mẫu này chưa lưu vào cơ sở dữ liệu.
-        </div>
-
-        <form id="bookingForm">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label" for="bookingName">Tên của bạn</label>
-                    <input class="form-control"
-                           id="bookingName"
-                           type="text"
-                           required />
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label" for="bookingPhone">Số điện thoại</label>
-                    <input class="form-control"
-                           id="bookingPhone"
-                           type="tel"
-                           required />
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label" for="bookingDate">Ngày đặt</label>
-                    <input class="form-control"
-                           id="bookingDate"
-                           type="date"
-                           required />
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label" for="bookingTime">Giờ đặt</label>
-                    <input class="form-control"
-                           id="bookingTime"
-                           type="time"
-                           required />
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label" for="guestCount">Số lượng khách</label>
-                    <input class="form-control"
-                           id="guestCount"
-                           type="number"
-                           min="1"
-                           value="2"
-                           required />
-                </div>
-
-                <div class="col-12">
-                    <label class="form-label" for="specialRequest">
-                        Yêu cầu đặc biệt
-                    </label>
-                    <textarea class="form-control"
-                              id="specialRequest"
-                              rows="3"
-                              placeholder="Ví dụ: bàn gần cửa sổ, dịp sinh nhật..."></textarea>
-                </div>
-
-                <div class="col-12">
-                    <button class="btn btn-food" type="submit">
-                        Gửi yêu cầu đặt bàn
-                    </button>
-                </div>
+    <div class="booking-experience">
+        <aside class="booking-visual">
+            <img src="@Url.Content("~/Content/IMG/Hero/restaurant-1.png")"
+                 alt="Không gian ấm cúng của nhà hàng" />
+            <div class="booking-visual-copy">
+                <div class="small text-uppercase fw-bold mb-2">FoodTable · Đặt bàn dễ dàng</div>
+                <h3>Một chỗ ngồi đẹp, một buổi tối đáng nhớ.</h3>
+                <p class="mb-0">Chọn thời gian phù hợp, để nhà hàng chuẩn bị đón bạn.</p>
             </div>
-        </form>
+        </aside>
+
+        <div class="booking-content">
+            <div class="booking-brand"><span aria-hidden="true">♨</span> FoodTable</div>
+            <h2 class="booking-heading">Đặt bàn tại nhà hàng</h2>
+
+            <div id="bookingMessage" class="alert alert-success d-none" role="status">
+                Đã xác nhận thông tin mẫu. Biểu mẫu hiện chưa lưu vào cơ sở dữ liệu.
+            </div>
+
+            <form id="bookingForm" novalidate>
+                <div class="booking-stepper" aria-label="Các bước đặt bàn">
+                    <div class="booking-step-track"><span id="bookingProgressFill" class="booking-step-track-fill"></span></div>
+                    <ol class="booking-step-list">
+                        <li class="booking-step-indicator is-active" data-step-indicator="1" aria-current="step">
+                            <span class="booking-step-dot">1</span><span>Chọn thời gian</span>
+                        </li>
+                        <li class="booking-step-indicator" data-step-indicator="2">
+                            <span class="booking-step-dot">2</span><span>Thông tin liên hệ</span>
+                        </li>
+                        <li class="booking-step-indicator" data-step-indicator="3">
+                            <span class="booking-step-dot">3</span><span>Xác nhận</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="booking-step-panel" data-step-panel="1">
+                    <h3>Chọn ngày và giờ bạn muốn đến</h3>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="bookingRestaurant">Nhà hàng</label>
+                            <select class="form-select" id="bookingRestaurant" required>
+                                <option value="">-- Chọn nhà hàng --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="bookingDate">Ngày đặt</label>
+                            <input class="form-control" id="bookingDate" type="date" required />
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12 mb-3">
+                            <div class="form-label">Giờ đặt</div>
+                            <input id="bookingTime" name="bookingTime" type="hidden" />
+
+                            @* Chỉ hiện 8 khung giờ phổ biến để phần đặt bàn gọn hơn. *@
+                            <div class="booking-time-grid" id="bookingTimeChoices">
+                                <button class="booking-time-slot" type="button" data-time="11:00">11:00</button>
+                                <button class="booking-time-slot" type="button" data-time="11:30">11:30</button>
+                                <button class="booking-time-slot" type="button" data-time="12:00">12:00</button>
+                                <button class="booking-time-slot" type="button" data-time="12:30">12:30</button>
+                                <button class="booking-time-slot" type="button" data-time="18:00">18:00</button>
+                                <button class="booking-time-slot" type="button" data-time="18:30">18:30</button>
+                                <button class="booking-time-slot" type="button" data-time="19:00">19:00</button>
+                                <button class="booking-time-slot" type="button" data-time="19:30">19:30</button>
+                            </div>
+                            <div id="bookingTimeError" class="small text-danger mt-2 d-none">
+                                Bạn hãy chọn hoặc nhập giờ đặt bàn.
+                            </div>
+                            </div>
+                        <div>
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label mt-3" for="customBookingTime"> Hoặc tự chọn giờ </label>
+                                    <input class="form-control"
+                                           id="customBookingTime"
+                                           type="time"
+                                           min="10:00"
+                                           max="22:00"
+                                           step="1800" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" for="guestCount">Số lượng khách</label>
+                                    <input class="form-control" id="guestCount" type="number" min="1" max="30" value="2" required />
+                                </div>
+                            </div>
+
+                            <div class="booking-step-actions justify-content-end">
+                                <button class="btn btn-food" type="button" data-booking-next>Tiếp tục <span aria-hidden="true">→</span></button>
+                            </div>
+                        </div>
+
+                <div class="booking-step-panel d-none" data-step-panel="2">
+                    <h3>Cho nhà hàng biết cách liên hệ với bạn</h3>
+                    <div class="mb-3">
+                        <label class="form-label" for="bookingName">Tên của bạn</label>
+                        <input class="form-control" id="bookingName" type="text" autocomplete="name" placeholder="Nhập tên của bạn" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="bookingPhone">Số điện thoại</label>
+                        <input class="form-control"
+                               id="bookingPhone"
+                               type="tel"
+                               inputmode="numeric"
+                               pattern="0[0-9]{9}"
+                               minlength="10"
+                               maxlength="10"
+                               title="Số điện thoại phải có 10 chữ số và bắt đầu bằng số 0"
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
+                               autocomplete="tel"
+                               placeholder="Nhập số điện thoại, ví dụ 0912345678"
+                               required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="specialRequest">Yêu cầu đặc biệt <span class="text-secondary fw-normal">(không bắt buộc)</span></label>
+                        <textarea class="form-control" id="specialRequest" rows="3" placeholder="Ví dụ: bàn gần cửa sổ, dịp sinh nhật..."></textarea>
+                    </div>
+                    <div class="booking-step-actions">
+                        <button class="btn btn-outline-secondary" type="button" data-booking-back>Quay lại</button>
+                        <button class="btn btn-food" type="button" data-booking-next>Tiếp tục <span aria-hidden="true">→</span></button>
+                    </div>
+                </div>
+
+                <div class="booking-step-panel d-none" data-step-panel="3">
+                    <h3>Kiểm tra lại thông tin đặt bàn</h3>
+
+                    <div class="booking-summary">
+                        <div class="booking-summary-row">
+                            <span>Nhà hàng</span><span id="summaryRestaurant"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Ngày đặt</span><span id="summaryDate"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Giờ đặt</span><span id="summaryTime"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Số lượng khách</span><span id="summaryGuests"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Tên của bạn</span><span id="summaryName"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Số điện thoại</span><span id="summaryPhone"></span>
+                        </div>
+                        <div class="booking-summary-row">
+                            <span>Yêu cầu đặc biệt</span><span id="summarySpecial"></span>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-actions flex-wrap">
+                        <button class="btn btn-outline-danger"
+                                id="restartBooking"
+                                type="button">
+                            Quay lại từ đầu
+                        </button>
+
+                        <button class="btn btn-food"
+                                id="confirmBooking"
+                                type="submit">
+                            Xác nhận đặt bàn
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 
 @section scripts {
     <script>
         (function () {
+            // Lấy các ô tìm kiếm, bộ lọc, thẻ nhà hàng và khu vực chi tiết.
             const searchInput = document.getElementById("searchInput");
             const searchButton = document.getElementById("searchButton");
             const areaFilter = document.getElementById("areaFilter");
@@ -812,10 +1235,12 @@
             const priceFilter = document.getElementById("priceFilter");
             const purposeFilter = document.getElementById("purposeFilter");
             const restaurantItems = document.querySelectorAll(".restaurant-item");
+            const noResults = document.getElementById("noResults");
             const cuisineButtons = document.querySelectorAll(".cuisine-chip");
             const detailSection = document.getElementById("chi-tiet");
             const detailImage = document.getElementById("detailImage");
 
+            // Khi bấm Xem chi tiết, đọc dữ liệu từ đúng thẻ nhà hàng đó.
             document.getElementById("restaurantList")
                 .addEventListener("click", function (event) {
                     const detailLink = event.target.closest('a[href="#chi-tiet"]');
@@ -853,18 +1278,20 @@
                     document.getElementById("detailPurpose").textContent =
                         purposes || "Chưa cập nhật";
 
-                    detailSection.console.log(); assList.remove("d-none");
+                    detailSection.classList.remove("d-none");
                     detailSection.scrollIntoView({
                         behavior: "smooth",
                         block: "nearest"
                     });
                 });
 
+            // Đóng khung thông tin chi tiết đang hiển thị.
             document.getElementById("closeDetail")
                 .addEventListener("click", function () {
                     detailSection.classList.add("d-none");
                 });
 
+            // Kiểm tra giá của nhà hàng có nằm trong khoảng giá đã chọn không.
             function priceMatches(price, range) {
                 if (range === "") {
                     return true;
@@ -881,6 +1308,7 @@
                 return price >= min && price < max;
             }
 
+            // Đồng bộ trạng thái sáng/tắt của các nút ẩm thực.
             function updateCuisineButtons() {
                 cuisineButtons.forEach(function (button) {
                     const isSelected =
@@ -891,6 +1319,7 @@
                 });
             }
 
+            // Lọc nhà hàng theo từ khóa, khu vực, ẩm thực, giá và mục đích.
             function filterRestaurants() {
                 const searchText = searchInput.value.trim().toLowerCase();
                 const selectedArea = areaFilter.value;
@@ -939,6 +1368,7 @@
                 noResults.classList.toggle("d-none", visibleCount > 0);
             }
 
+            // Kết nối các điều khiển tìm kiếm và lọc với hàm lọc danh sách.
             searchButton.addEventListener("click", filterRestaurants);
             searchInput.addEventListener("input", filterRestaurants);
             areaFilter.addEventListener("change", filterRestaurants);
@@ -961,6 +1391,7 @@
                 });
             });
 
+            // Đổi trạng thái yêu thích trên giao diện.
             document.querySelectorAll(".favorite-button").forEach(function (button) {
                 button.addEventListener("click", function () {
                     const isSaved = button.dataset.saved === "true";
@@ -971,20 +1402,204 @@
                 });
             });
 
+            // Lấy các thành phần của biểu mẫu đặt bàn ba bước.
+            const bookingForm = document.getElementById("bookingForm");
+            const bookingPanels = bookingForm.querySelectorAll("[data-step-panel]");
+            const bookingIndicators = bookingForm.querySelectorAll("[data-step-indicator]");
+            const bookingProgressFill = document.getElementById("bookingProgressFill");
+            const bookingDate = document.getElementById("bookingDate");
+            const bookingRestaurant = document.getElementById("bookingRestaurant");
+            const bookingTime = document.getElementById("bookingTime");
+            const customBookingTime = document.getElementById("customBookingTime");
+            const bookingTimeError = document.getElementById("bookingTimeError");
+            const bookingMessage = document.getElementById("bookingMessage");
+            // Đổ tên các nhà hàng trên trang vào danh sách chọn đặt bàn.
+            restaurantItems.forEach(function (item) {
+                const nameElement = item.querySelector(".card-title");
+                const metaElement = item.querySelector(".text-secondary.mb-2");
+
+                if (!nameElement) return;
+
+                const name = nameElement.textContent.trim();
+                const option = document.createElement("option");
+
+                option.value = name;
+                option.textContent = metaElement
+                    ? name + " — " + metaElement.textContent.trim()
+                    : name;
+
+                bookingRestaurant.appendChild(option);
+            });
+            let currentBookingStep = 1;
+
+            // Không cho khách chọn ngày đặt bàn đã qua.
             const today = new Date();
             const localDate = new Date(
                 today.getTime() - today.getTimezoneOffset() * 60000
             ).toISOString().split("T")[0];
+            bookingDate.min = localDate;
 
-            document.getElementById("bookingDate").min = localDate;
+            // Hiện bước hiện tại và cập nhật thanh tiến trình.
+            function showBookingStep(step) {
+                currentBookingStep = step;
 
-            document.getElementById("bookingForm")
-                .addEventListener("submit", function (event) {
-                    event.preventDefault();
-                    document.getElementById("bookingMessage")
-                        .classList.remove("d-none");
-                    this.reset();
+                bookingPanels.forEach(function (panel) {
+                    panel.classList.toggle("d-none", Number(panel.dataset.stepPanel) !== step);
                 });
+
+                bookingIndicators.forEach(function (indicator) {
+                    const indicatorStep = Number(indicator.dataset.stepIndicator);
+                    indicator.classList.toggle("is-active", indicatorStep === step);
+                    indicator.classList.toggle("is-complete", indicatorStep < step);
+
+                    if (indicatorStep === step) {
+                        indicator.setAttribute("aria-current", "step");
+                    } else {
+                        indicator.removeAttribute("aria-current");
+                    }
+                });
+
+                bookingProgressFill.style.width = ((step - 1) * 50) + "%";
+
+                if (step === 3) {
+                    updateBookingSummary();
+                }
+            }
+
+            // Kiểm tra dữ liệu bắt buộc trước khi chuyển sang bước kế tiếp.
+            function validateBookingStep(step) {
+                const panel = bookingForm.querySelector('[data-step-panel="' + step + '"]');
+                const requiredFields = panel.querySelectorAll("input[required], textarea[required], select[required]");
+
+                for (const field of requiredFields) {
+                    if (!field.checkValidity()) {
+                        field.reportValidity();
+                        return false;
+                    }
+                }
+
+                if (step === 1) {
+                    if (!bookingTime.value) {
+                        bookingTimeError.classList.remove("d-none");
+                        return false;
+                    }
+
+                    if (customBookingTime.value && !customBookingTime.checkValidity()) {
+                        customBookingTime.reportValidity();
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            // Hiển thị thông tin khách đã nhập ở bước xác nhận.
+            function updateBookingSummary() {
+                const dateValue = bookingDate.value;
+                const formattedDate = dateValue
+                    ? new Date(dateValue + "T00:00:00").toLocaleDateString("vi-VN", {
+                        weekday: "long", day: "2-digit", month: "2-digit", year: "numeric"
+                    })
+                    : "Chưa chọn";
+
+                document.getElementById("summaryDate").textContent = formattedDate;
+                document.getElementById("summaryRestaurant").textContent = bookingRestaurant.value || "Chưa chọn";
+                document.getElementById("summaryTime").textContent = bookingTime.value || "Chưa chọn";
+                document.getElementById("summaryGuests").textContent = document.getElementById("guestCount").value + " khách";
+                document.getElementById("summaryName").textContent = document.getElementById("bookingName").value.trim();
+                document.getElementById("summaryPhone").textContent = document.getElementById("bookingPhone").value.trim();
+                document.getElementById("summarySpecial").textContent = document.getElementById("specialRequest").value.trim() || "Không có";
+            }
+
+            document.querySelectorAll(".booking-time-slot").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    document.querySelectorAll(".booking-time-slot").forEach(function (option) {
+                        option.classList.remove("is-selected");
+                        option.setAttribute("aria-pressed", "false");
+                    });
+
+                    button.classList.add("is-selected");
+                    button.setAttribute("aria-pressed", "true");
+                    customBookingTime.value = "";
+                    bookingTime.value = button.dataset.time;
+                    bookingTimeError.classList.add("d-none");
+                });
+            });
+            // Nếu khách tự nhập giờ, bỏ chọn giờ có sẵn và cập nhật giờ đặt.
+            customBookingTime.addEventListener("input", function () {
+                bookingTime.value = this.value;
+
+                if (this.value) {
+                    document.querySelectorAll(".booking-time-slot").forEach(function (button) {
+                        button.classList.remove("is-selected");
+                        button.setAttribute("aria-pressed", "false");
+                    });
+
+                    bookingTimeError.classList.add("d-none");
+                }
+            });
+            // Xử lý nút Tiếp tục sau khi dữ liệu của bước hiện tại hợp lệ.
+            bookingForm.querySelectorAll("[data-booking-next]").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    if (validateBookingStep(currentBookingStep)) {
+                        showBookingStep(Math.min(currentBookingStep + 1, 3));
+                    }
+                });
+            });
+
+            // Quay lại bước trước mà vẫn giữ thông tin đã nhập.
+            bookingForm.querySelectorAll("[data-booking-back]").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    showBookingStep(Math.max(currentBookingStep - 1, 1));
+                });
+            });
+            // Xóa thông tin đặt bàn và đưa biểu mẫu về bước đầu.
+            document.getElementById("restartBooking")
+                .addEventListener("click", function () {
+                    bookingForm.reset();
+                    bookingTime.value = "";
+                    bookingTimeError.classList.add("d-none");
+                    bookingMessage.classList.add("d-none");
+
+                    document.querySelectorAll(".booking-time-slot").forEach(function (button) {
+                        button.classList.remove("is-selected");
+                        button.setAttribute("aria-pressed", "false");
+                    });
+
+                    document.getElementById("confirmBooking").disabled = false;
+
+                    [
+                        "summaryRestaurant",
+                        "summaryDate",
+                        "summaryTime",
+                        "summaryGuests",
+                        "summaryName",
+                        "summaryPhone",
+                        "summarySpecial"
+                    ].forEach(function (id) {
+                        document.getElementById(id).textContent = "";
+                    });
+
+                    showBookingStep(1);
+
+                    document.getElementById("dat-ban").scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
+
+            // Đây là xác nhận mẫu trên giao diện; hiện chưa lưu vào cơ sở dữ liệu.
+            bookingForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                if (currentBookingStep !== 3) {
+                    return;
+                }
+
+                bookingMessage.classList.remove("d-none");
+                bookingMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                document.getElementById("confirmBooking").disabled = true;
+            });
         })();
     </script>
 }

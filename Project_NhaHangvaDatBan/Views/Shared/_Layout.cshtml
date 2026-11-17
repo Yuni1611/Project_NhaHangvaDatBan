@@ -44,11 +44,122 @@
             min-height: 75vh;
         }
 
+        /* Footer nhiều cột: giới thiệu, liên kết và thông tin website */
         .site-footer {
-            margin-top: 3rem;
-            padding: 1.5rem 0;
-            color: #6c625c;
+            margin-top: 4rem;
+            padding: 2.75rem 0 1.25rem;
+            color: #30231d;
+            background: #fff;
             border-top: 1px solid #eadbcf;
+        }
+
+        .footer-top {
+            padding-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: inline-block;
+            margin-bottom: .75rem;
+            color: #b14322;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-style: italic;
+            text-decoration: none;
+        }
+
+        .footer-brand:hover {
+            color: #873317;
+        }
+
+        .footer-description,
+        .footer-info-copy {
+            color: #6c625c;
+            line-height: 1.7;
+        }
+
+        .footer-heading {
+            margin-bottom: 1rem;
+            color: #30231d;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: .55rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #6c625c;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: #b14322;
+            text-decoration: underline;
+        }
+
+        .footer-info {
+            padding-top: 1.5rem;
+            border-top: 1px solid #eadbcf;
+        }
+
+        .footer-info-title {
+            margin-bottom: .75rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: .75rem;
+        }
+
+        .footer-action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .65rem 1rem;
+            color: #fff;
+            background: #a94321;
+            border: 1px solid #a94321;
+            border-radius: .5rem;
+            text-decoration: none;
+            transition: background .2s ease;
+        }
+
+        .footer-action-link:hover,
+        .footer-action-link:focus {
+            color: #fff;
+            background: #873317;
+        }
+
+        .footer-top-link {
+            color: #6c625c;
+            text-decoration: none;
+        }
+
+        .footer-top-link:hover,
+        .footer-top-link:focus {
+            color: #b14322;
+        }
+
+        @@media (max-width: 767.98px) {
+            .site-footer {
+                margin-top: 2.5rem;
+                padding-top: 2rem;
+            }
+
+            .footer-actions {
+                justify-content: flex-start;
+            }
         }
         .food-navbar .booking-link,
         .food-navbar .account-link {
@@ -81,7 +192,7 @@
             }
     </style>
 </head>
-<body>
+<body id="top">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top food-navbar">
         <div class="container">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
@@ -160,17 +271,83 @@
 
     <main class="container page-content">
         @RenderBody()
-
-        <footer class="site-footer text-center" id="lien-he">
-            <p class="mb-1">
-                © @DateTime.Now.Year FoodTable
-            </p>
-            <p class="mb-0">
-                Khám phá nhà hàng, lựa chọn món ngon và đặt bàn dễ dàng.
-            </p>
-        </footer>
     </main>
 
+    @* Footer nhiều cột, phù hợp với nội dung FoodTable. *@
+    <footer class="site-footer" id="lien-he">
+        <div class="container">
+            <div class="row g-4 footer-top">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a class="footer-brand" href="@Url.Action("Index", "Home")">
+                        <span aria-hidden="true">♨</span> FoodTable
+                    </a>
+                    <p class="footer-description mb-0">
+                        Khám phá nhà hàng, lựa chọn món ngon và gửi yêu cầu đặt bàn dễ dàng.
+                        Tìm địa điểm phù hợp cho buổi gặp mặt tiếp theo của bạn.
+                    </p>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h2 class="footer-heading">Khám phá</h2>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Home")#nha-hang">Tìm nhà hàng</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#am-thuc">Loại ẩm thực</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#nha-hang">Nhà hàng nổi bật</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h2 class="footer-heading">Đặt bàn</h2>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Home")#dat-ban">Gửi yêu cầu đặt bàn</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#dat-ban">Chọn ngày và giờ</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#dat-ban">Thông tin liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h2 class="footer-heading">Thông tin</h2>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Về FoodTable</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Thông tin website</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h2 class="footer-heading">Dành cho nhà hàng</h2>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Giới thiệu nhà hàng</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Hợp tác cùng FoodTable</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#lien-he">Gửi thông tin địa điểm</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row align-items-center g-3 footer-info">
+                <div class="col-lg-8">
+                    <h2 class="footer-info-title">THÔNG TIN FOODTABLE</h2>
+                    <p class="footer-info-copy mb-2">
+                        FoodTable là website giới thiệu nhà hàng và hỗ trợ gửi yêu cầu đặt bàn.
+                        Thông tin nhà hàng và đặt chỗ trên trang hiện là dữ liệu minh họa.
+                    </p>
+                    <p class="footer-info-copy mb-0">
+                        © @DateTime.Now.Year FoodTable · Dự án website mẫu
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-actions">
+                        <a class="footer-action-link" href="@Url.Action("Index", "Home")#nha-hang">
+                            Khám phá nhà hàng <span aria-hidden="true">→</span>
+                        </a>
+                        <a class="footer-top-link" href="#top" aria-label="Quay lại đầu trang">
+                            ↑ Lên đầu trang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     <script src="@Url.Content("~/Scripts/bootstrap.bundle.js")"></script>
     @RenderSection("scripts", required: false)
