@@ -1,0 +1,289 @@
+﻿
+@{
+    ViewBag.Title = "Lịch sử đặt chỗ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userCode = ViewBag.UserCode ?? "5MEUXX";
+    var userPhone = ViewBag.UserPhone ?? "+84344006801";
+}
+
+<style>
+    .booking-history-page {
+        padding-top: 12px;
+        padding-bottom: 32px;
+    }
+
+    .breadcrumb-custom {
+        font-size: 0.92rem;
+        color: #6c625c;
+        margin-bottom: 18px;
+    }
+
+        .breadcrumb-custom a {
+            color: #6c625c;
+            text-decoration: none;
+        }
+
+        .breadcrumb-custom .current {
+            color: #c2412d;
+            font-weight: 600;
+        }
+
+    .profile-sidebar-card,
+    .history-main-card {
+        background: #fff;
+        border: 1px solid #ece6df;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .profile-header-box {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px;
+        border-bottom: 1px solid #f0ebe5;
+    }
+
+    .profile-avatar-circle {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        border: 2px solid #30231d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: #30231d;
+    }
+
+    .profile-menu-list {
+        list-style: none;
+        margin: 0;
+        padding: 8px 0;
+    }
+
+        .profile-menu-list li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 18px;
+            color: #30231d;
+            text-decoration: none;
+            font-size: 0.96rem;
+            border-bottom: 1px solid #f5f1ec;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .profile-menu-list li:last-child a {
+            border-bottom: none;
+        }
+
+        .profile-menu-list li a:hover {
+            background-color: #faf6f1;
+            color: #c2412d;
+        }
+
+        .profile-menu-list li a.active-menu {
+            font-weight: 600;
+            color: #c2412d;
+            background-color: #fdf8f5;
+        }
+
+    .history-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ece6df;
+        padding: 0 12px;
+    }
+
+    .history-tab-btn {
+        background: transparent;
+        border: none;
+        padding: 15px 18px;
+        font-size: 0.95rem;
+        color: #6c625c;
+        position: relative;
+        cursor: pointer;
+    }
+
+        .history-tab-btn.active {
+            color: #d93829;
+            font-weight: 600;
+        }
+
+            .history-tab-btn.active::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 2.5px;
+                background-color: #d93829;
+            }
+
+    .history-search-row {
+        display: flex;
+        gap: 10px;
+        padding: 18px;
+    }
+
+        .history-search-row input {
+            flex: 1;
+            height: 42px;
+            border: 1px solid #dcd6ce;
+            border-radius: 6px;
+            padding: 0 14px;
+            font-size: 0.94rem;
+        }
+
+    .history-search-btn {
+        background-color: #d93829;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0 22px;
+        height: 42px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .history-search-btn:hover {
+            background-color: #ba2b1e;
+        }
+
+    .empty-history-box {
+        text-align: center;
+        padding: 56px 20px 72px;
+        color: #7c736d;
+    }
+</style>
+
+<div class="booking-history-page">
+    <div class="breadcrumb-custom">
+        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+        <span class="mx-1">&gt;</span>
+        <span class="current">Lịch sử đặt chỗ</span>
+    </div>
+
+    <div class="row g-4 align-items-start">
+        <!-- Cột trái: Thông tin tài khoản & Menu -->
+        <div class="col-12 col-lg-4">
+            <div class="profile-sidebar-card">
+                <div class="profile-header-box">
+                    <div class="profile-avatar-circle">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="fw-semibold" style="color: #30231d; font-size: 0.98rem;">
+                            ID FoodTable : <strong>@userCode</strong>
+                        </div>
+                        <div class="small mt-1" style="color: #4a403a;">
+                            SĐT : @userPhone
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="profile-menu-list">
+                    <li>
+                        <a href="javascript:void(0);" onclick="showProfileNotice('Thông tin tài khoản')">
+                            <span><i class="me-2">👤</i> Thông tin tài khoản</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showProfileNotice('Quản lý mật khẩu')">
+                            <span><i class="me-2">🔒</i> Quản lý mật khẩu</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showProfileNotice('Danh sách yêu thích')">
+                            <span><i class="me-2">🤍</i> Danh sách yêu thích</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LichSuDatCho", "Account")" class="active-menu">
+                            <span><i class="me-2">📅</i> Lịch sử đặt chỗ</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showProfileNotice('Liên kết tài khoản')">
+                            <span><i class="me-2">🔗</i> Liên kết tài khoản</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("DangXuat", "Account")">
+                            <span><i class="me-2">↪</i> Thoát</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cột phải: Tabs trạng thái đặt chỗ & Danh sách giao dịch -->
+        <div class="col-12 col-lg-8">
+            <div class="history-main-card">
+                <div class="history-tabs" id="historyTabs">
+                    <button type="button" class="history-tab-btn active" data-tab="cho-xac-nhan">Chờ xác nhận</button>
+                    <button type="button" class="history-tab-btn" data-tab="da-tiep-nhan">Đã tiếp nhận</button>
+                    <button type="button" class="history-tab-btn" data-tab="da-den">Đã đến</button>
+                    <button type="button" class="history-tab-btn" data-tab="huy-bo-lo">Hủy / Bỏ lỡ</button>
+                    <button type="button" class="history-tab-btn" data-tab="tat-ca">Tất cả</button>
+                </div>
+
+                <form class="history-search-row" onsubmit="return handleSearchHistory(event);">
+                    <input type="text" id="txtSearchBooking" placeholder="Nhập tìm kiếm" />
+                    <button type="submit" class="history-search-btn">Tìm kiếm</button>
+                </form>
+
+                <div id="bookingEmptyState" class="empty-history-box">
+                    <div class="mb-3">
+                        <svg width="78" height="78" viewBox="0 0 80 80" fill="none">
+                            <rect x="20" y="12" width="40" height="56" rx="5" stroke="#c8c2bc" stroke-width="2.5" />
+                            <line x1="28" y1="22" x2="52" y2="22" stroke="#c8c2bc" stroke-width="2.5" stroke-linecap="round" />
+                            <line x1="28" y1="31" x2="46" y2="31" stroke="#c8c2bc" stroke-width="2.5" stroke-linecap="round" />
+                            <path d="M16 46c4-3 9-2 12 2l6 8-7 6-9-9c-2-2-2-5 1-7z" fill="#fff" stroke="#b5afa9" stroke-width="2.2" />
+                        </svg>
+                    </div>
+                    <div style="font-size: 0.96rem;">Không có giao dịch nào</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".history-tab-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            document.querySelectorAll(".history-tab-btn").forEach(function (b) {
+                b.classList.remove("active");
+            });
+            btn.classList.add("active");
+            filterHistoryItems();
+        });
+    });
+
+    function filterHistoryItems() {
+        var emptyBox = document.getElementById("bookingEmptyState");
+        if (emptyBox) {
+            emptyBox.style.display = "block";
+        }
+    }
+
+    function showProfileNotice(sectionName: string) {
+    alert("Mục \"" + sectionName + "\" đang được cập nhật cho tài khoản @userCode.");
+}
+function handleSearchHistory(e: any) {
+    if (e && typeof e.preventDefault === "function") {
+        e.preventDefault();
+    }
+    filterHistoryItems();
+    return false;
+}
+</script>

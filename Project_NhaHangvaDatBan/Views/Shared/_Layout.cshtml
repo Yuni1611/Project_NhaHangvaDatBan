@@ -28,16 +28,13 @@
 
             .food-navbar .nav-link {
                 color: #fff;
+                font-size: 1.15rem;
             }
 
                 .food-navbar .nav-link:hover,
                 .food-navbar .nav-link:focus {
                     color: #ffd9b4;
                 }
-            .food-navbar .nav-link {
-                color: #fff;
-                font-size: 1.15rem;
-            }
 
         .page-content {
             padding-top: 90px;
@@ -67,9 +64,9 @@
             text-decoration: none;
         }
 
-        .footer-brand:hover {
-            color: #873317;
-        }
+            .footer-brand:hover {
+                color: #873317;
+            }
 
         .footer-description,
         .footer-info-copy {
@@ -92,17 +89,17 @@
             list-style: none;
         }
 
-        .footer-links a {
-            color: #6c625c;
-            text-decoration: none;
-            transition: color .2s ease;
-        }
+            .footer-links a {
+                color: #6c625c;
+                text-decoration: none;
+                transition: color .2s ease;
+            }
 
-        .footer-links a:hover,
-        .footer-links a:focus {
-            color: #b14322;
-            text-decoration: underline;
-        }
+                .footer-links a:hover,
+                .footer-links a:focus {
+                    color: #b14322;
+                    text-decoration: underline;
+                }
 
         .footer-info {
             padding-top: 1.5rem;
@@ -135,21 +132,21 @@
             transition: background .2s ease;
         }
 
-        .footer-action-link:hover,
-        .footer-action-link:focus {
-            color: #fff;
-            background: #873317;
-        }
+            .footer-action-link:hover,
+            .footer-action-link:focus {
+                color: #fff;
+                background: #873317;
+            }
 
         .footer-top-link {
             color: #6c625c;
             text-decoration: none;
         }
 
-        .footer-top-link:hover,
-        .footer-top-link:focus {
-            color: #b14322;
-        }
+            .footer-top-link:hover,
+            .footer-top-link:focus {
+                color: #b14322;
+            }
 
         @@media (max-width: 767.98px) {
             .site-footer {
@@ -161,6 +158,7 @@
                 justify-content: flex-start;
             }
         }
+
         .food-navbar .booking-link,
         .food-navbar .account-link {
             display: inline-flex;
@@ -182,13 +180,86 @@
                 background: #873317;
             }
 
-
         .food-navbar .account-link {
             color: #fff;
         }
 
             .food-navbar .account-link:hover {
                 color: #ffd9b4;
+            }
+
+        /* Làm dịu lớp nền tối mặc định của Bootstrap để ánh sáng phía sau xuyên qua rõ hơn */
+        .modal-backdrop.show {
+            opacity: 0.25 !important;
+        }
+
+        /* Khung viền kính bên ngoài */
+        .food-glass-outer {
+            background: rgba(255, 250, 242, 0.12);
+            backdrop-filter: blur(16px) saturate(130%);
+            -webkit-backdrop-filter: blur(16px) saturate(130%);
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.30);
+        }
+
+        /* Nền bên trong đồng bộ độ trong suốt & độ mờ như khung viền */
+        .food-glass-inner {
+            background: rgba(255, 250, 242, 0.22);
+            backdrop-filter: blur(16px) saturate(130%);
+            -webkit-backdrop-filter: blur(16px) saturate(130%);
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            border-radius: 11px;
+            overflow: hidden;
+        }
+
+        #loginModal .food-glass-inner h3,
+        #loginModal .food-glass-inner label,
+        #loginModal .food-glass-inner p,
+        #loginModal .food-glass-inner a {
+            text-shadow: 0 1px 6px rgba(255, 250, 242, 0.75);
+        }
+
+        /* Ép chiều rộng input 100% để ghi đè max-width mặc định */
+        #loginModal .food-glass-input {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 44px;
+            background-color: rgba(255, 252, 246, 0.85) !important;
+            border: 1.5px solid #594a3c !important;
+            border-radius: 9px !important;
+            color: #3b3127 !important;
+            font-size: 0.95rem;
+            padding: 0 42px 0 14px !important;
+            box-shadow: none !important;
+        }
+
+            #loginModal .food-glass-input::placeholder {
+                color: #7a6d60;
+            }
+
+            #loginModal .food-glass-input:focus {
+                background-color: rgba(255, 253, 249, 0.96) !important;
+                border-color: #c26a48 !important;
+            }
+
+        /* Nút hành động màu gạch nung */
+        #loginModal .food-glass-btn {
+            width: 100%;
+            height: 44px;
+            background-color: #c26a48;
+            border: none;
+            border-radius: 9px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+            #loginModal .food-glass-btn:hover {
+                background-color: #b05b3a;
+                color: #fff;
             }
     </style>
 </head>
@@ -210,36 +281,36 @@
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="@Url.Action("Index", "Home")#nha-hang">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#nha-hang">
                             Nhà hàng
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="@Url.Action("Index", "Home")#am-thuc">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#am-thuc">
                             Ẩm thực
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="@Url.Action("Index", "Home")#dat-ban">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#dat-ban">
                             Đặt bàn
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="@Url.Action("Index", "Home")#lien-he">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")#lien-he">
                             Liên hệ
                         </a>
                     </li>
+
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link booking-link" href="#">
+                        <a class="nav-link booking-link"
+                           id="btnDatChoCuaToi"
+                           href="@Url.Action("LichSuDatCho", "Account")"
+                           data-logged-in="@(Session["UserID"] != null ? "true" : "false")">
                             <svg width="20" height="20" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2"
                                  stroke-linecap="round" stroke-linejoin="round"
@@ -252,18 +323,34 @@
                         </a>
                     </li>
 
-                    <li class="nav-item ms-lg-2">
-                        <a class="nav-link account-link" href="#">
-                            <svg width="20" height="20" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2"
-                                 stroke-linecap="round" stroke-linejoin="round"
-                                 aria-hidden="true">
-                                <circle cx="12" cy="8" r="4"></circle>
-                                <path d="M5 21a7 7 0 0 1 14 0"></path>
-                            </svg>
-                            Tài khoản
-                        </a>
-                    </li>
+                    @if (Session["UserName"] != null)
+                    {
+                        <li class="nav-item dropdown ms-lg-2">
+                            <a class="nav-link dropdown-toggle fw-semibold text-warning" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Xin chào, @Session["UserName"]
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("LichSuDatBan", "DatBan")">Lịch sử đặt bàn</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="@Url.Action("DangXuat", "Account")">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link account-link" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <svg width="20" height="20" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <circle cx="12" cy="8" r="4"></circle>
+                                    <path d="M5 21a7 7 0 0 1 14 0"></path>
+                                </svg>
+                                Tài khoản
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -348,8 +435,282 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Tài Khoản (Đăng nhập / Đăng ký / Quên mật khẩu) -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true"
+         data-open-tab="@(TempData["OpenTab"] ?? "dangnhap")"
+         data-has-reg-error="@(TempData["RegisterError"] != null ? "true" : "false")"
+         data-has-forgot-error="@(TempData["ForgotError"] != null ? "true" : "false")"
+         data-should-open="@((TempData["LoginError"] != null || TempData["RegisterError"] != null || TempData["ForgotError"] != null || TempData["SuccessMessage"] != null) ? "true" : "false")">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content border-0 bg-transparent">
+                <div class="food-glass-outer">
+                    <div class="food-glass-inner">
+
+                        <!-- Thanh header màu gạch nung -->
+                        <div class="d-flex align-items-center justify-content-between px-3 py-2 text-white"
+                             style="background-color: #c26a48; min-height: 46px;">
+                            <div style="width: 24px;"></div>
+                            <span class="fw-bold" style="font-size: 1.15rem; font-family: Georgia, 'Times New Roman', serif; letter-spacing: 0.3px;">
+                                FoodTable
+                            </span>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.75rem; opacity: 0.9;"></button>
+                        </div>
+
+                        <!-- ==================== 1. FORM ĐĂNG NHẬP ==================== -->
+                        <div id="sectionDangNhap">
+                            <div class="text-center pt-4 pb-3 px-4">
+                                <h3 class="fw-bold mb-0" style="color: #3b3127; font-family: Georgia, 'Times New Roman', serif; font-size: 1.65rem;">
+                                    Đăng nhập
+                                </h3>
+                            </div>
+
+                            @using (Html.BeginForm("DangNhap", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" id="loginReturnUrl" name="returnUrl" value="@(TempData["ReturnUrl"] ?? "")" />
+                                <div class="px-4 pb-4">
+                                    @if (TempData["LoginError"] != null)
+                                    {
+                                        <div class="alert alert-danger py-2 small rounded-3 text-center mb-3">@TempData["LoginError"]</div>
+                                    }
+                                    @if (TempData["SuccessMessage"] != null)
+                                    {
+                                        <div class="alert alert-success py-2 small rounded-3 text-center mb-3">@TempData["SuccessMessage"]</div>
+                                    }
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="text" class="form-control food-glass-input" name="EmailOrPhone" placeholder="Email hoặc Số điện thoại" required />
+                                        <span class="position-absolute top-50 end-0 translate-middle-y me-3 d-flex align-items-center" style="pointer-events: none;">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="password" class="form-control food-glass-input" id="txtMatKhauLogin" name="MatKhau" placeholder="Mật khẩu" required />
+                                        <button type="button" onclick="toggleInputPass('txtMatKhauLogin')" class="btn border-0 position-absolute top-50 end-0 translate-middle-y me-2 p-1 d-flex align-items-center" tabindex="-1" title="Hiện/Ẩn mật khẩu">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" /></svg>
+                                        </button>
+                                    </div>
+
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <input class="form-check-input mt-0 me-2" type="checkbox" id="GhiNhoGlass" name="GhiNho" style="width: 16px; height: 16px; background-color: rgba(255, 252, 246, 0.85); border: 1.5px solid #6e6052; border-radius: 4px; cursor: pointer;">
+                                        <label class="small mb-0" for="GhiNhoGlass" style="color: #3b3127; cursor: pointer;">Ghi nhớ mật khẩu</label>
+                                    </div>
+
+                                    <button type="submit" class="btn food-glass-btn shadow-sm">Đăng nhập</button>
+
+                                    <div class="text-center mt-3 pt-1 d-flex flex-column gap-1">
+                                        <a href="javascript:void(0);" onclick="switchAccountTab('quenmatkhau')" class="small text-decoration-none" style="color: #3b3127;">Quên mật khẩu?</a>
+                                        <a href="javascript:void(0);" onclick="switchAccountTab('dangky')" class="small text-decoration-none fw-semibold" style="color: #3b3127;">Tạo tài khoản mới</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- ==================== 2. FORM TẠO TÀI KHOẢN MỚI ==================== -->
+                        <div id="sectionDangKy" style="display: none;">
+                            <div class="text-center pt-4 pb-3 px-4">
+                                <h3 class="fw-bold mb-0" style="color: #3b3127; font-family: Georgia, 'Times New Roman', serif; font-size: 1.55rem;">
+                                    Tạo tài khoản
+                                </h3>
+                            </div>
+
+                            @using (Html.BeginForm("DangKy", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="px-4 pb-4">
+                                    @if (TempData["RegisterError"] != null)
+                                    {
+                                        <div class="alert alert-danger py-2 small rounded-3 text-center mb-3">@TempData["RegisterError"]</div>
+                                    }
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="text" class="form-control food-glass-input" name="HoTen" placeholder="Họ và tên" required />
+                                        <span class="position-absolute top-50 end-0 translate-middle-y me-3 d-flex align-items-center" style="pointer-events: none;">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="tel" class="form-control food-glass-input" name="SoDienThoai" placeholder="Số điện thoại" required />
+                                        <span class="position-absolute top-50 end-0 translate-middle-y me-3 d-flex align-items-center" style="pointer-events: none;">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="email" class="form-control food-glass-input" name="Email" placeholder="Email" required />
+                                        <span class="position-absolute top-50 end-0 translate-middle-y me-3 d-flex align-items-center" style="pointer-events: none;">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="password" class="form-control food-glass-input" id="txtMatKhauReg" name="MatKhau" placeholder="Mật khẩu" required />
+                                        <button type="button" onclick="toggleInputPass('txtMatKhauReg')" class="btn border-0 position-absolute top-50 end-0 translate-middle-y me-2 p-1 d-flex align-items-center" tabindex="-1" title="Hiện/Ẩn mật khẩu">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" /></svg>
+                                        </button>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="password" class="form-control food-glass-input" id="txtXacNhanMatKhau" name="XacNhanMatKhau" placeholder="Nhập lại mật khẩu" required />
+                                        <button type="button" onclick="toggleInputPass('txtXacNhanMatKhau')" class="btn border-0 position-absolute top-50 end-0 translate-middle-y me-2 p-1 d-flex align-items-center" tabindex="-1" title="Hiện/Ẩn mật khẩu">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                                        </button>
+                                    </div>
+
+                                    <button type="submit" class="btn food-glass-btn shadow-sm">Tạo tài khoản</button>
+
+                                    <div class="text-center mt-3 pt-1">
+                                        <a href="javascript:void(0);" onclick="switchAccountTab('dangnhap')" class="small text-decoration-none" style="color: #3b3127;">
+                                            Đã có tài khoản? <strong>Đăng nhập</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- ==================== 3. FORM QUÊN MẬT KHẨU ==================== -->
+                        <div id="sectionQuenMatKhau" style="display: none;">
+                            <div class="text-center pt-4 pb-2 px-4">
+                                <h3 class="fw-bold mb-1" style="color: #3b3127; font-family: Georgia, 'Times New Roman', serif; font-size: 1.55rem;">
+                                    Quên mật khẩu
+                                </h3>
+                                <p class="small mb-2" style="color: #4a3f34;">
+                                    Nhập Email đã đăng ký để đặt lại mật khẩu mới
+                                </p>
+                            </div>
+
+                            @using (Html.BeginForm("QuenMatKhau", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="px-4 pb-4">
+                                    @if (TempData["ForgotError"] != null)
+                                    {
+                                        <div class="alert alert-danger py-2 small rounded-3 text-center mb-3">@TempData["ForgotError"]</div>
+                                    }
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="email" class="form-control food-glass-input" name="Email" placeholder="Nhập Email của bạn" required />
+                                        <span class="position-absolute top-50 end-0 translate-middle-y me-3 d-flex align-items-center" style="pointer-events: none;">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-3 position-relative">
+                                        <input type="password" class="form-control food-glass-input" id="txtMatKhauMoi" name="MatKhauMoi" placeholder="Nhập mật khẩu mới" required />
+                                        <button type="button" onclick="toggleInputPass('txtMatKhauMoi')" class="btn border-0 position-absolute top-50 end-0 translate-middle-y me-2 p-1 d-flex align-items-center" tabindex="-1" title="Hiện/Ẩn mật khẩu">
+                                            <svg width="17" height="17" viewBox="0 0 24 24" fill="#3b3127"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" /></svg>
+                                        </button>
+                                    </div>
+
+                                    <button type="submit" class="btn food-glass-btn shadow-sm">Đặt lại mật khẩu</button>
+
+                                    <div class="text-center mt-3 pt-1">
+                                        <a href="javascript:void(0);" onclick="switchAccountTab('dangnhap')" class="small text-decoration-none" style="color: #3b3127;">
+                                            ← Quay lại <strong>Đăng nhập</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     <script src="@Url.Content("~/Scripts/bootstrap.bundle.js")"></script>
     @RenderSection("scripts", required: false)
+
+    <script>
+                                                     function toggleInputPass(inputId) {
+                                                            var input = document.getElementById(inputId);
+                                                            if (input) {
+                                                                var currentType = input.getAttribute('type');
+                                                                input.setAttribute('type', currentType === 'password' ? 'text' : 'password');
+                                                            }
+                                                        }
+
+                                                        function switchAccountTab(tabName) {
+                                                            var loginSec = document.getElementById('sectionDangNhap');
+                                                            var regSec = document.getElementById('sectionDangKy');
+                                                            var forgotSec = document.getElementById('sectionQuenMatKhau');
+
+                                                            if (loginSec) loginSec.style.display = (tabName === 'dangnhap') ? 'block' : 'none';
+                                                            if (regSec) regSec.style.display = (tabName === 'dangky') ? 'block' : 'none';
+                                                            if (forgotSec) forgotSec.style.display = (tabName === 'quenmatkhau') ? 'block' : 'none';
+                                                        }
+
+                                                        document.addEventListener("click", function (e) {
+                                                            var trigger = e.target.closest('[data-bs-target="#loginModal"]');
+                                                            if (!trigger) return;
+                                                            e.preventDefault();
+
+                                                            var modalEl = document.getElementById("loginModal");
+                                                            if (!modalEl) return;
+
+                                                            switchAccountTab("dangnhap");
+
+                                                            if (window.bootstrap && window.bootstrap.Modal) {
+                                                                window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+                                                            } else {
+                                                                modalEl.classList.add("show");
+                                                                modalEl.style.display = "block";
+                                                            }
+                                                        });
+
+                                                        document.addEventListener("DOMContentLoaded", function () {
+                                                            var modalEl = document.getElementById('loginModal');
+                                                            if (!modalEl) return;
+
+                                                            var shouldOpen = modalEl.getAttribute('data-should-open') === 'true';
+                                                            if (!shouldOpen) return;
+
+                                                            var openTab = modalEl.getAttribute('data-open-tab') || 'dangnhap';
+                                                            if (modalEl.getAttribute('data-has-reg-error') === 'true') openTab = 'dangky';
+                                                            if (modalEl.getAttribute('data-has-forgot-error') === 'true') openTab = 'quenmatkhau';
+
+                                                            switchAccountTab(openTab);
+
+                                                            if (window.bootstrap && window.bootstrap.Modal) {
+                                                                window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+                                                            } else {
+                                                                modalEl.classList.add('show');
+                                                                modalEl.style.display = 'block';
+                                                            }
+                                                        });
+document.addEventListener("click", function (e) {
+    var bookingBtn = e.target.closest("#btnDatChoCuaToi");
+    if (!bookingBtn) return;
+
+    var isLoggedIn = bookingBtn.getAttribute("data-logged-in") === "true";
+    if (!isLoggedIn) {
+        e.preventDefault();
+
+        var returnInput = document.getElementById("loginReturnUrl");
+        if (returnInput) {
+            returnInput.value = bookingBtn.getAttribute("href");
+        }
+
+        if (typeof switchAccountTab === "function") {
+            switchAccountTab("dangnhap");
+        }
+
+        var modalEl = document.getElementById("loginModal");
+        if (modalEl) {
+            if (window.bootstrap && window.bootstrap.Modal) {
+                window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+            } else {
+                modalEl.classList.add("show");
+                modalEl.style.display = "block";
+            }
+        }
+    }
+});
+    </script> 
 </body>
 </html>
