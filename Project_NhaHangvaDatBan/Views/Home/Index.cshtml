@@ -136,64 +136,135 @@
         border-radius: 1rem;
     }
 
-    #dat-ban .section-title {
-        max-width: 1120px;
-        margin: 2rem auto 1rem;
-    }
-
-    .booking-form-panel {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: clamp(1.25rem, 3vw, 2rem);
-        box-shadow: 0 8px 24px rgba(74, 43, 25, .08);
-    }
-
-    .booking-form-grid {
+    /* Chi tiết sổ ngang theo mẫu đã chọn + 3 món + Google Map */
+    .ft-detail-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.1rem 1.5rem;
+        grid-template-columns: 240px 1fr 300px;
+        gap: 20px;
+        align-items: start;
     }
 
-    .booking-field {
-        min-width: 0;
-    }
-
-    .booking-field--full,
-    .booking-submit {
-        grid-column: 1 / -1;
-    }
-
-    .booking-form-grid .form-label {
-        margin-bottom: .45rem;
-        color: #43271b;
-        font-weight: 600;
-    }
-
-    .booking-form-grid .form-control {
+    .ft-main-photo-box img {
         width: 100%;
-        min-height: 48px;
-        border-radius: .65rem;
+        height: 215px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
     }
 
-    .booking-form-grid textarea.form-control {
-        min-height: 112px;
-        resize: vertical;
+    .ft-price-caption {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #5c514a;
     }
 
-    .booking-submit .btn {
-        min-height: 48px;
-        padding-inline: 1.5rem;
-        font-weight: 600;
-    }
-
-    @@media (max-width: 767.98px) {
-        .booking-form-grid {
-            grid-template-columns: 1fr;
+        .ft-price-caption strong {
+            color: #a94321;
         }
 
-        .booking-field--full,
-        .booking-submit {
-            grid-column: auto;
+    .ft-tag-pill {
+        display: inline-block;
+        padding: 3px 11px;
+        border: 1px solid #d6c3b5;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        color: #4a3a31;
+        background: #fcf9f5;
+        margin-right: 6px;
+        margin-bottom: 6px;
+    }
+
+    .ft-featured-dishes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin: 8px 0 12px;
+    }
+
+    .ft-dish-card {
+        border: 1px solid #efe6dc;
+        border-radius: 8px;
+        padding: 6px;
+        background: #fffaf6;
+    }
+
+        .ft-dish-card img {
+            width: 100%;
+            height: 74px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+    .ft-dish-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #30231d;
+        margin-top: 5px;
+    }
+
+    .ft-dish-price {
+        font-size: 0.78rem;
+        color: #a94321;
+        font-weight: 600;
+    }
+
+    .ft-map-column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ft-map-top-bar {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .ft-map-box {
+        border: 1px solid #e5ddd3;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #faf7f3;
+    }
+
+    .ft-map-search-row {
+        display: flex;
+        gap: 6px;
+        padding: 8px;
+        background: #fff;
+        border-bottom: 1px solid #eee6dc;
+    }
+
+        .ft-map-search-row input {
+            flex: 1;
+            min-width: 0;
+            border: 1px solid #dcd2c6;
+            border-radius: 6px;
+            padding: 5px 9px;
+            font-size: 0.84rem;
+        }
+
+    .ft-map-frame {
+        width: 100%;
+        height: 155px;
+    }
+
+    .ft-map-address {
+        padding: 8px 10px;
+        font-size: 0.82rem;
+        color: #30231d;
+        background: #fff;
+    }
+
+    @@media (max-width: 991.98px) {
+        .ft-detail-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .ft-featured-dishes {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -430,6 +501,39 @@
             overflow-wrap: anywhere;
         }
 
+    .booking-success-card {
+        padding: 1.5rem;
+        border: 1px solid #eadbcf;
+        border-radius: 1rem;
+        background: #fffaf6;
+        text-align: center;
+    }
+
+    .booking-success-badge {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 0.85rem;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #a94321;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .booking-code-pill {
+        display: inline-block;
+        padding: 0.3rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid #d6c3b5;
+        color: #43271b;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
     @@media (max-width: 767.98px) {
         .booking-experience {
             grid-template-columns: 1fr;
@@ -451,18 +555,6 @@
 
         .booking-step-indicator {
             font-size: .75rem;
-        }
-    }
-
-    /* Dòng thực đơn và các nút loại ẩm thực */
-    .menu-row {
-        padding: 1rem 0;
-        border-bottom: 1px solid #eadbcf;
-    }
-
-    @@media (max-width: 576px) {
-        .hero {
-            padding: 2rem 1.25rem;
         }
     }
 
@@ -519,53 +611,28 @@
          data-bs-interval="4500">
 
         <div class="carousel-indicators">
-            <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Ảnh 1"></button>
-
-            <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="1"
-                    aria-label="Ảnh 2"></button>
-
-            <button type="button"
-                    data-bs-target="#heroCarousel"
-                    data-bs-slide-to="2"
-                    aria-label="Ảnh 3"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Ảnh 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Ảnh 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Ảnh 3"></button>
         </div>
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-1.png")"
-                     alt="Không gian nhà hàng 1" />
+                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-1.png")" alt="Không gian nhà hàng 1" />
             </div>
-
             <div class="carousel-item">
-                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-2.png")"
-                     alt="Không gian nhà hàng 2" />
+                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-2.png")" alt="Không gian nhà hàng 2" />
             </div>
-
             <div class="carousel-item">
-                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-3.png")"
-                     alt="Không gian nhà hàng 3" />
+                <img src="@Url.Content("~/Content/IMG/Hero/restaurant-3.png")" alt="Không gian nhà hàng 3" />
             </div>
         </div>
 
-        <button class="carousel-control-prev"
-                type="button"
-                data-bs-target="#heroCarousel"
-                data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Ảnh trước</span>
         </button>
-
-        <button class="carousel-control-next"
-                type="button"
-                data-bs-target="#heroCarousel"
-                data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Ảnh tiếp theo</span>
         </button>
@@ -574,12 +641,8 @@
     <div class="hero-shade"></div>
 
     <div class="hero-content">
-        <span class="badge text-bg-warning mb-3">
-            FOODTABLE · TP. HỒ CHÍ MINH
-        </span>
-
+        <span class="badge text-bg-warning mb-3">FOODTABLE · TP. HỒ CHÍ MINH</span>
         <h1>Khám phá nhà hàng phù hợp với bạn</h1>
-
         <p>
             Tìm nhà hàng theo tên, khu vực và loại ẩm thực.
             Chọn địa điểm yêu thích rồi gửi yêu cầu đặt bàn.
@@ -587,22 +650,11 @@
 
         <div class="row g-2 hero-search mt-4">
             <div class="col-md-8">
-                <label class="visually-hidden" for="searchInput">
-                    Tìm nhà hàng
-                </label>
-
-                <input id="searchInput"
-                       class="form-control form-control-lg"
-                       type="search"
-                       placeholder="Ví dụ: món Việt, Quận 1, steak..." />
+                <label class="visually-hidden" for="searchInput">Tìm nhà hàng</label>
+                <input id="searchInput" class="form-control form-control-lg" type="search" placeholder="Ví dụ: món Việt, Quận 1, steak..." />
             </div>
-
             <div class="col-md-4">
-                <button id="searchButton"
-                        class="btn btn-food btn-lg w-100"
-                        type="button">
-                    Tìm nhà hàng
-                </button>
+                <button id="searchButton" class="btn btn-food btn-lg w-100" type="button">Tìm nhà hàng</button>
             </div>
         </div>
     </div>
@@ -669,9 +721,7 @@
             <button id="applyFiltersButton"
                     class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2"
                     type="button">
-                <svg width="20" height="20" viewBox="0 0 24 24"
-                     fill="none" stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                     <line x1="4" y1="6" x2="20" y2="6"></line>
                     <circle cx="9" cy="6" r="2"></circle>
                     <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -687,317 +737,164 @@
     <input type="hidden" id="cuisineFilter" value="" />
 
     <div id="am-thuc" class="mt-4">
-        @* Các biểu tượng giúp chọn nhanh loại ẩm thực. *@
         <h2 class="section-title">Khám phá theo loại ẩm thực</h2>
 
         <div class="cuisine-scroll">
-            <button class="cuisine-chip" type="button" data-cuisine="Buffet" aria-pressed="false">
-                <span class="cuisine-icon">🍱</span><span>Buffet</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Lẩu" aria-pressed="false">
-                <span class="cuisine-icon">🍲</span><span>Lẩu</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Nướng" aria-pressed="false">
-                <span class="cuisine-icon">🍖</span><span>Nướng</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Hải sản" aria-pressed="false">
-                <span class="cuisine-icon">🦐</span><span>Hải sản</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Quán nhậu" aria-pressed="false">
-                <span class="cuisine-icon">🍻</span><span>Quán nhậu</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món Nhật" aria-pressed="false">
-                <span class="cuisine-icon">🍣</span><span>Món Nhật</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món Việt" aria-pressed="false">
-                <span class="cuisine-icon">🍜</span><span>Món Việt</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món Hàn" aria-pressed="false">
-                <span class="cuisine-icon">🥘</span><span>Món Hàn</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món Âu" aria-pressed="false">
-                <span class="cuisine-icon">🍝</span><span>Món Âu</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món Hoa" aria-pressed="false">
-                <span class="cuisine-icon">🥟</span><span>Món Hoa</span>
-            </button>
-            <button class="cuisine-chip" type="button" data-cuisine="Món chay" aria-pressed="false">
-                <span class="cuisine-icon">🥬</span><span>Món chay</span>
-            </button>
+            <button class="cuisine-chip" type="button" data-cuisine="Buffet" aria-pressed="false"><span class="cuisine-icon">🍱</span><span>Buffet</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Lẩu" aria-pressed="false"><span class="cuisine-icon">🍲</span><span>Lẩu</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Nướng" aria-pressed="false"><span class="cuisine-icon">🍖</span><span>Nướng</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Hải sản" aria-pressed="false"><span class="cuisine-icon">🦐</span><span>Hải sản</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Quán nhậu" aria-pressed="false"><span class="cuisine-icon">🍻</span><span>Quán nhậu</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món Nhật" aria-pressed="false"><span class="cuisine-icon">🍣</span><span>Món Nhật</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món Việt" aria-pressed="false"><span class="cuisine-icon">🍜</span><span>Món Việt</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món Hàn" aria-pressed="false"><span class="cuisine-icon">🥘</span><span>Món Hàn</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món Âu" aria-pressed="false"><span class="cuisine-icon">🍝</span><span>Món Âu</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món Hoa" aria-pressed="false"><span class="cuisine-icon">🥟</span><span>Món Hoa</span></button>
+            <button class="cuisine-chip" type="button" data-cuisine="Món chay" aria-pressed="false"><span class="cuisine-icon">🥬</span><span>Món chay</span></button>
         </div>
     </div>
 
-    @* Các thẻ nhà hàng; nút Xem chi tiết lấy dữ liệu từ từng thẻ. *@
     <h2 class="section-title">Nhà hàng nổi bật</h2>
 
     <div class="row g-4" id="restaurantList">
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 1"
-             data-cuisine="Món Âu"
-             data-price="650"
-             data-purpose="Hẹn hò|Tiệc/Hội nghị">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="the-garden-bistro" data-area="Quận 1" data-cuisine="Món Âu" data-price="650" data-purpose="Hẹn hò|Tiệc/Hội nghị">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
-                     alt="Không gian The Garden Bistro" />
-
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Không gian The Garden Bistro" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">The Garden Bistro</h3>
                     <p class="text-secondary mb-2">Quận 1 · Món Âu</p>
                     <p class="restaurant-rating">★ 4.8 <span class="text-secondary fw-normal">(256 đánh giá)</span></p>
-                    <p class="card-text">
-                        Nhà hàng Âu với không gian xanh, phù hợp cho buổi tối và gặp gỡ bạn bè.
-                    </p>
-
+                    <p class="card-text">Nhà hàng Âu với không gian xanh, phù hợp cho buổi tối và gặp gỡ bạn bè.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button"
-                                type="button">
-                            ♡ Yêu thích
-                        </button>
-                        <a class="btn btn-food ms-auto" href="#chi-tiet">
-                            Xem chi tiết
-                        </a>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
+                        <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 1"
-             data-cuisine="Món Âu"
-             data-price="450"
-             data-purpose="Hẹn hò|Tiếp khách">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="maison-steak" data-area="Quận 1" data-cuisine="Món Âu" data-price="450" data-purpose="Hẹn hò|Tiếp khách">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
-                     alt="Món ăn tại Maison Steak" />
-
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Món ăn tại Maison Steak" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Maison Steak</h3>
                     <p class="text-secondary mb-2">Quận 1 · Món Âu</p>
                     <p class="restaurant-rating">★ 4.7 <span class="text-secondary fw-normal">(189 đánh giá)</span></p>
-                    <p class="card-text">
-                        Phục vụ steak trong không gian ấm cúng, phù hợp cho gia đình và bạn bè.
-                    </p>
-
+                    <p class="card-text">Phục vụ steak trong không gian ấm cúng, phù hợp cho gia đình và bạn bè.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button"
-                                type="button">
-                            ♡ Yêu thích
-                        </button>
-                        <a class="btn btn-food ms-auto" href="#chi-tiet">
-                            Xem chi tiết
-                        </a>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
+                        <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 5"
-             data-cuisine="Món Hoa"
-             data-price="250"
-             data-purpose="Ăn gia đình|Họp nhóm">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="dong-phuong" data-area="Quận 5" data-cuisine="Món Hoa" data-price="250" data-purpose="Ăn gia đình|Họp nhóm">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
-                     alt="Không gian nhà hàng Đông Phương" />
-
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Không gian nhà hàng Đông Phương" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Đông Phương</h3>
                     <p class="text-secondary mb-2">Quận 5 · Món Hoa</p>
                     <p class="restaurant-rating">★ 4.6 <span class="text-secondary fw-normal">(142 đánh giá)</span></p>
-                    <p class="card-text">
-                        Ẩm thực Trung Hoa với các món truyền thống và không gian dùng bữa riêng.
-                    </p>
-
+                    <p class="card-text">Ẩm thực Trung Hoa với các món truyền thống và không gian dùng bữa riêng.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button"
-                                type="button">
-                            ♡ Yêu thích
-                        </button>
-                        <a class="btn btn-food ms-auto" href="#chi-tiet">
-                            Xem chi tiết
-                        </a>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
+                        <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 3"
-             data-cuisine="Món Việt"
-             data-price="120"
-             data-purpose="Ăn gia đình|Họp nhóm">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="moc-viet-quan" data-area="Quận 3" data-cuisine="Món Việt" data-price="120" data-purpose="Ăn gia đình|Họp nhóm">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-                     alt="Món ăn Việt Nam" />
-
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="Món ăn Việt Nam" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Mộc Việt Quán</h3>
                     <p class="text-secondary mb-2">Quận 3 · Món Việt</p>
                     <p class="restaurant-rating">★ 4.9 <span class="text-secondary fw-normal">(98 đánh giá)</span></p>
-                    <p class="card-text">
-                        Những món Việt quen thuộc trong không gian gần gũi, ấm cúng.
-                    </p>
-
+                    <p class="card-text">Những món Việt quen thuộc trong không gian gần gũi, ấm cúng.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button"
-                                type="button">
-                            ♡ Yêu thích
-                        </button>
-                        <a class="btn btn-food ms-auto" href="#chi-tiet">
-                            Xem chi tiết
-                        </a>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
+                        <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 1"
-             data-cuisine="Món Nhật"
-             data-price="420"
-             data-purpose="Hẹn hò|Tiếp khách">
-            <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="@Url.Content("~/Content/IMG/Restaurants/restaurant-5.jpg")"
-                     alt="Sushi và sashimi tại Sakura Table" />
 
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="sakura-table" data-area="Quận 1" data-cuisine="Món Nhật" data-price="420" data-purpose="Hẹn hò|Tiếp khách">
+            <article class="card restaurant-card">
+                <img class="card-img-top" src="@Url.Content("~/Content/IMG/Restaurants/restaurant-5.jpg")" alt="Sushi và sashimi tại Sakura Table" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Sakura Table</h3>
                     <p class="text-secondary mb-2">Quận 1 · Món Nhật</p>
-                    <p class="restaurant-rating">
-                        ★ 4.8 <span class="text-secondary fw-normal">(112 đánh giá mẫu)</span>
-                    </p>
-                    <p class="card-text">
-                        Sushi, sashimi và các món Nhật trong không gian yên tĩnh, hiện đại.
-                    </p>
-
+                    <p class="restaurant-rating">★ 4.8 <span class="text-secondary fw-normal">(112 đánh giá mẫu)</span></p>
+                    <p class="card-text">Sushi, sashimi và các món Nhật trong không gian yên tĩnh, hiện đại.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button" type="button">
-                            ♡ Yêu thích
-                        </button>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
                         <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 7"
-             data-cuisine="Món Hàn"
-             data-price="380"
-             data-purpose="Họp nhóm|Sinh nhật|Tiệc/Hội nghị">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="seoul-house" data-area="Quận 7" data-cuisine="Món Hàn" data-price="380" data-purpose="Họp nhóm|Sinh nhật|Tiệc/Hội nghị">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="@Url.Content("~/Content/IMG/Restaurants/restaurant-6.jpg")"
-                     alt="Thịt nướng kiểu Hàn tại Seoul House" />
-
+                <img class="card-img-top" src="@Url.Content("~/Content/IMG/Restaurants/restaurant-6.jpg")" alt="Thịt nướng kiểu Hàn tại Seoul House" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Seoul House</h3>
                     <p class="text-secondary mb-2">Quận 7 · Món Hàn</p>
-                    <p class="restaurant-rating">
-                        ★ 4.7 <span class="text-secondary fw-normal">(96 đánh giá mẫu)</span>
-                    </p>
-                    <p class="card-text">
-                        Thịt nướng kiểu Hàn ăn kèm nhiều món phụ, phù hợp đi nhóm và tổ chức sinh nhật.
-                    </p>
-
+                    <p class="restaurant-rating">★ 4.7 <span class="text-secondary fw-normal">(96 đánh giá mẫu)</span></p>
+                    <p class="card-text">Thịt nướng kiểu Hàn ăn kèm nhiều món phụ, phù hợp đi nhóm và tổ chức sinh nhật.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button" type="button">
-                            ♡ Yêu thích
-                        </button>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
                         <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Quận 3"
-             data-cuisine="Buffet"
-             data-price="299"
-             data-purpose="Ăn gia đình|Họp nhóm|Tiệc/Hội nghị">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="ganh-que-buffet" data-area="Quận 3" data-cuisine="Buffet" data-price="299" data-purpose="Ăn gia đình|Họp nhóm|Tiệc/Hội nghị">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="@Url.Content("~/Content/IMG/Restaurants/restaurant-7.jpg")"
-                     alt="Các món ăn tại Gánh Quê Buffet" />
-
+                <img class="card-img-top" src="@Url.Content("~/Content/IMG/Restaurants/restaurant-7.jpg")" alt="Các món ăn tại Gánh Quê Buffet" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Gánh Quê Buffet</h3>
                     <p class="text-secondary mb-2">Quận 3 · Buffet</p>
-                    <p class="restaurant-rating">
-                        ★ 4.6 <span class="text-secondary fw-normal">(84 đánh giá mẫu)</span>
-                    </p>
-                    <p class="card-text">
-                        Buffet các món Việt quen thuộc, có nhiều lựa chọn cho gia đình và nhóm bạn.
-                    </p>
-
+                    <p class="restaurant-rating">★ 4.6 <span class="text-secondary fw-normal">(84 đánh giá mẫu)</span></p>
+                    <p class="card-text">Buffet các món Việt quen thuộc, có nhiều lựa chọn cho gia đình và nhóm bạn.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button" type="button">
-                            ♡ Yêu thích
-                        </button>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
                         <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Thủ Đức"
-             data-cuisine="Hải sản"
-             data-price="550"
-             data-purpose="Ăn gia đình|Sinh nhật|Tiếp khách">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="hai-san-ben-gio" data-area="Thủ Đức" data-cuisine="Hải sản" data-price="550" data-purpose="Ăn gia đình|Sinh nhật|Tiếp khách">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="@Url.Content("~/Content/IMG/Restaurants/restaurant-8.jpg")"
-                     alt="Hải sản tại nhà hàng Bến Gió" />
-
+                <img class="card-img-top" src="@Url.Content("~/Content/IMG/Restaurants/restaurant-8.jpg")" alt="Hải sản tại nhà hàng Bến Gió" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Hải Sản Bến Gió</h3>
                     <p class="text-secondary mb-2">Thủ Đức · Hải sản</p>
-                    <p class="restaurant-rating">
-                        ★ 4.5 <span class="text-secondary fw-normal">(75 đánh giá mẫu)</span>
-                    </p>
-                    <p class="card-text">
-                        Tôm, cua, cá và các món hải sản chế biến theo yêu cầu trong không gian thoáng.
-                    </p>
-
+                    <p class="restaurant-rating">★ 4.5 <span class="text-secondary fw-normal">(75 đánh giá mẫu)</span></p>
+                    <p class="card-text">Tôm, cua, cá và các món hải sản chế biến theo yêu cầu trong không gian thoáng.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button" type="button">
-                            ♡ Yêu thích
-                        </button>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
                         <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-sm-6 col-lg-4 restaurant-item"
-             data-area="Bình Thạnh"
-             data-cuisine="Lẩu"
-             data-price="280"
-             data-purpose="Ăn gia đình|Họp nhóm|Sinh nhật">
+        <div class="col-sm-6 col-lg-4 restaurant-item" data-id="lau-moc-garden" data-area="Bình Thạnh" data-cuisine="Lẩu" data-price="280" data-purpose="Ăn gia đình|Họp nhóm|Sinh nhật">
             <article class="card restaurant-card">
-                <img class="card-img-top"
-                     src="@Url.Content("~/Content/IMG/Restaurants/restaurant-9.jpg")"
-                     alt="Lẩu nấm tại Lẩu Mộc Garden" />
-
+                <img class="card-img-top" src="@Url.Content("~/Content/IMG/Restaurants/restaurant-9.jpg")" alt="Lẩu nấm tại Lẩu Mộc Garden" />
                 <div class="card-body d-flex flex-column">
                     <h3 class="card-title h5">Lẩu Mộc Garden</h3>
                     <p class="text-secondary mb-2">Bình Thạnh · Lẩu</p>
-                    <p class="restaurant-rating">
-                        ★ 4.8 <span class="text-secondary fw-normal">(102 đánh giá mẫu)</span>
-                    </p>
-                    <p class="card-text">
-                        Lẩu nấm, rau tươi và không gian xanh cho những buổi gặp mặt thân mật.
-                    </p>
-
+                    <p class="restaurant-rating">★ 4.8 <span class="text-secondary fw-normal">(102 đánh giá mẫu)</span></p>
+                    <p class="card-text">Lẩu nấm, rau tươi và không gian xanh cho những buổi gặp mặt thân mật.</p>
                     <div class="mt-auto d-flex gap-2">
-                        <button class="btn btn-outline-danger favorite-button" type="button">
-                            ♡ Yêu thích
-                        </button>
+                        <button class="btn btn-outline-danger favorite-button" type="button">♡ Yêu thích</button>
                         <a class="btn btn-food ms-auto" href="#chi-tiet">Xem chi tiết</a>
                     </div>
                 </div>
@@ -1010,44 +907,55 @@
     </p>
 </section>
 
-@* Khu vực hiển thị chi tiết nhà hàng được chọn. *@
+@* Khu vực hiển thị chi tiết nhà hàng sổ ngang + 3 món đặc trưng + Google Map. *@
 <section id="chi-tiet"
-         class="mt-3 d-none"
+         class="mt-4 d-none"
          aria-live="polite"
          aria-label="Thông tin nhà hàng được chọn">
-    <div class="booking-panel py-3 px-3">
-        <div class="row g-3 align-items-center">
-            <div class="col-12 col-sm-4 col-lg-3">
-                <img id="detailImage"
-                     class="img-fluid rounded-3 w-100"
-                     style="height: 160px; object-fit: cover;"
-                     src=""
-                     alt="" />
+    <div class="booking-panel">
+        <div class="ft-detail-grid">
+            <div class="ft-main-photo-box">
+                <img id="detailImage" src="" alt="" />
+                <div class="ft-price-caption">
+                    Giá tham khảo: <strong id="detailPrice"></strong>
+                </div>
             </div>
 
-            <div class="col-12 col-sm-8 col-lg-9">
-                <div class="d-flex justify-content-between align-items-start gap-3">
-                    <div>
-                        <h2 id="detailName" class="h4 mb-1"></h2>
-                        <p id="detailMeta" class="text-secondary mb-2"></p>
-                    </div>
-
-                    <button id="closeDetail"
-                            class="btn btn-sm btn-outline-secondary"
-                            type="button">
-                        Đóng
-                    </button>
-                </div>
-
+            <div>
+                <h2 id="detailName" class="h4 mb-1"></h2>
+                <p id="detailMeta" class="text-secondary mb-1"></p>
                 <p id="detailRating" class="restaurant-rating mb-2"></p>
-                <p id="detailDescription" class="mb-2"></p>
 
+                <div id="detailTags" class="mb-2"></div>
+
+                <div class="small fw-semibold" style="color: #30231d;">Món ăn đặc trưng</div>
+                <div id="detailDishes" class="ft-featured-dishes"></div>
+
+                <p id="detailDescription" class="mb-2"></p>
                 <div class="small text-secondary">
-                    <strong>Giá tham khảo:</strong>
-                    <span id="detailPrice"></span>
-                    <span class="mx-2">·</span>
                     <strong>Phù hợp:</strong>
                     <span id="detailPurpose"></span>
+                </div>
+            </div>
+
+            <div class="ft-map-column">
+                <div class="ft-map-top-bar">
+                    <button id="closeDetail" class="btn btn-sm btn-outline-secondary" type="button">Đóng</button>
+                </div>
+
+                <div class="ft-map-box">
+                    <div class="ft-map-search-row">
+                        <input type="text" id="mapPinInput" placeholder="Tìm / ghim địa chỉ hoặc tọa độ" />
+                        <button type="button" id="btnPinMap" class="btn btn-sm btn-food">Ghim</button>
+                    </div>
+                    <div class="ft-map-frame">
+                        <iframe id="detailMapIframe"
+                                style="width:100%; height:100%; border:0;"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://maps.google.com/maps?q=TP.HCM&hl=vi&z=15&output=embed"></iframe>
+                    </div>
+                    <div id="detailMapAddress" class="ft-map-address"></div>
                 </div>
             </div>
         </div>
@@ -1058,8 +966,7 @@
 <section id="dat-ban" class="mt-5">
     <div class="booking-experience">
         <aside class="booking-visual">
-            <img src="@Url.Content("~/Content/IMG/Hero/restaurant-1.png")"
-                 alt="Không gian ấm cúng của nhà hàng" />
+            <img src="@Url.Content("~/Content/IMG/Hero/restaurant-1.png")" alt="Không gian ấm cúng của nhà hàng" />
             <div class="booking-visual-copy">
                 <div class="small text-uppercase fw-bold mb-2">FoodTable · Đặt bàn dễ dàng</div>
                 <h3>Một chỗ ngồi đẹp, một buổi tối đáng nhớ.</h3>
@@ -1105,12 +1012,12 @@
                             <input class="form-control" id="bookingDate" type="date" required />
                         </div>
                     </div>
+
                     <div class="row g-3">
                         <div class="col-12 mb-3">
                             <div class="form-label">Giờ đặt</div>
                             <input id="bookingTime" name="bookingTime" type="hidden" />
 
-                            @* Chỉ hiện 8 khung giờ phổ biến để phần đặt bàn gọn hơn. *@
                             <div class="booking-time-grid" id="bookingTimeChoices">
                                 <button class="booking-time-slot" type="button" data-time="11:00">11:00</button>
                                 <button class="booking-time-slot" type="button" data-time="11:30">11:30</button>
@@ -1124,28 +1031,24 @@
                             <div id="bookingTimeError" class="small text-danger mt-2 d-none">
                                 Bạn hãy chọn hoặc nhập giờ đặt bàn.
                             </div>
-                            </div>
                         </div>
-                            <div class="row g-3 align-items-end">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label mt-3" for="customBookingTime"> Hoặc tự chọn giờ </label>
-                                    <input class="form-control"
-                                           id="customBookingTime"
-                                           type="time"
-                                           min="10:00"
-                                           max="22:00"
-                                           step="1800" />
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="guestCount">Số lượng khách</label>
-                                    <input class="form-control" id="guestCount" type="number" min="1" max="30" value="2" required />
-                                </div>
-                            </div>
+                    </div>
 
-                            <div class="booking-step-actions justify-content-end">
-                                <button class="btn btn-food" type="button" data-booking-next>Tiếp tục <span aria-hidden="true">→</span></button>
-                            </div>
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label mt-3" for="customBookingTime">Hoặc tự chọn giờ</label>
+                            <input class="form-control" id="customBookingTime" type="time" min="10:00" max="22:00" step="1800" />
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="guestCount">Số lượng khách</label>
+                            <input class="form-control" id="guestCount" type="number" min="1" max="30" value="2" required />
+                        </div>
+                    </div>
+
+                    <div class="booking-step-actions justify-content-end">
+                        <button class="btn btn-food" type="button" data-booking-next>Tiếp tục <span aria-hidden="true">→</span></button>
+                    </div>
+                </div>
 
                 <div class="booking-step-panel d-none" data-step-panel="2">
                     <h3>Cho nhà hàng biết cách liên hệ với bạn</h3>
@@ -1179,44 +1082,47 @@
                 </div>
 
                 <div class="booking-step-panel d-none" data-step-panel="3">
-                    <h3>Kiểm tra lại thông tin đặt bàn</h3>
+                    <div id="bookingReviewBox">
+                        <h3>Kiểm tra lại thông tin đặt bàn</h3>
 
-                    <div class="booking-summary">
-                        <div class="booking-summary-row">
-                            <span>Nhà hàng</span><span id="summaryRestaurant"></span>
+                        <div class="booking-summary">
+                            <div class="booking-summary-row"><span>Nhà hàng</span><span id="summaryRestaurant"></span></div>
+                            <div class="booking-summary-row"><span>Ngày đặt</span><span id="summaryDate"></span></div>
+                            <div class="booking-summary-row"><span>Giờ đặt</span><span id="summaryTime"></span></div>
+                            <div class="booking-summary-row"><span>Số lượng khách</span><span id="summaryGuests"></span></div>
+                            <div class="booking-summary-row"><span>Tên của bạn</span><span id="summaryName"></span></div>
+                            <div class="booking-summary-row"><span>Số điện thoại</span><span id="summaryPhone"></span></div>
+                            <div class="booking-summary-row"><span>Yêu cầu đặc biệt</span><span id="summarySpecial"></span></div>
                         </div>
-                        <div class="booking-summary-row">
-                            <span>Ngày đặt</span><span id="summaryDate"></span>
-                        </div>
-                        <div class="booking-summary-row">
-                            <span>Giờ đặt</span><span id="summaryTime"></span>
-                        </div>
-                        <div class="booking-summary-row">
-                            <span>Số lượng khách</span><span id="summaryGuests"></span>
-                        </div>
-                        <div class="booking-summary-row">
-                            <span>Tên của bạn</span><span id="summaryName"></span>
-                        </div>
-                        <div class="booking-summary-row">
-                            <span>Số điện thoại</span><span id="summaryPhone"></span>
-                        </div>
-                        <div class="booking-summary-row">
-                            <span>Yêu cầu đặc biệt</span><span id="summarySpecial"></span>
+
+                        <div class="booking-step-actions flex-wrap">
+                            <button class="btn btn-outline-danger" id="restartBooking" type="button">Quay lại từ đầu</button>
+                            <button class="btn btn-food" id="confirmBooking" type="submit">Xác nhận đặt bàn</button>
                         </div>
                     </div>
 
-                    <div class="booking-step-actions flex-wrap">
-                        <button class="btn btn-outline-danger"
-                                id="restartBooking"
-                                type="button">
-                            Quay lại từ đầu
-                        </button>
+                    <div id="bookingSuccessPanel" class="booking-success-card d-none" role="status" aria-live="polite">
+                        <div class="booking-success-badge" aria-hidden="true">✓</div>
+                        <h3 class="mb-2">Đặt bàn thành công!</h3>
+                        <div id="successBookingCode" class="booking-code-pill">Mã đặt bàn: #FT0000</div>
+                        <p class="small text-secondary mb-3">
+                            Yêu cầu đặt bàn của bạn đã được ghi nhận với trạng thái <strong>Chờ xác nhận</strong>.
+                        </p>
 
-                        <button class="btn btn-food"
-                                id="confirmBooking"
-                                type="submit">
-                            Xác nhận đặt bàn
-                        </button>
+                        <div class="booking-summary text-start mb-3">
+                            <div class="booking-summary-row"><span>Nhà hàng</span><span id="successRestaurant"></span></div>
+                            <div class="booking-summary-row"><span>Ngày đặt</span><span id="successDate"></span></div>
+                            <div class="booking-summary-row"><span>Giờ đặt</span><span id="successTime"></span></div>
+                            <div class="booking-summary-row"><span>Số lượng khách</span><span id="successGuests"></span></div>
+                            <div class="booking-summary-row"><span>Tên của bạn</span><span id="successName"></span></div>
+                            <div class="booking-summary-row"><span>Số điện thoại</span><span id="successPhone"></span></div>
+                            <div class="booking-summary-row"><span>Yêu cầu đặc biệt</span><span id="successSpecial"></span></div>
+                            <div class="booking-summary-row"><span>Trạng thái</span><span>Chờ xác nhận</span></div>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <button class="btn btn-food" id="newBookingBtn" type="button">Đặt bàn mới</button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -1226,380 +1132,540 @@
 
 @section scripts {
     <script>
-        (function () {
-            // Lấy các ô tìm kiếm, bộ lọc, thẻ nhà hàng và khu vực chi tiết.
-            const searchInput = document.getElementById("searchInput");
-            const searchButton = document.getElementById("searchButton");
-            const areaFilter = document.getElementById("areaFilter");
-            const cuisineFilter = document.getElementById("cuisineFilter");
-            const priceFilter = document.getElementById("priceFilter");
-            const purposeFilter = document.getElementById("purposeFilter");
-            const restaurantItems = document.querySelectorAll(".restaurant-item");
-            const noResults = document.getElementById("noResults");
-            const cuisineButtons = document.querySelectorAll(".cuisine-chip");
-            const detailSection = document.getElementById("chi-tiet");
-            const detailImage = document.getElementById("detailImage");
+                (function () {
+                    const restaurantExtraData = {
+                        "the-garden-bistro": {
+                            tags: ["Hẹn hò", "Tiệc/Hội nghị"],
+                            address: "18 Nam Kỳ Khởi Nghĩa, Phường Nguyễn Thái Bình, Quận 1, TP.HCM",
+                            mapQuery: "18 Nam Kỳ Khởi Nghĩa, Quận 1, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Thăn bò nướng sốt tiêu đen", price: "340.000đ", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Mì Ý hải sản sốt cà chua", price: "185.000đ", img: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Salad cá ngừ trộn dầu giấm", price: "120.000đ", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "maison-steak": {
+                            tags: ["Hẹn hò", "Tiếp khách"],
+                            address: "123 Đường Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM",
+                            mapQuery: "123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Ribeye bò Mỹ áp chảo", price: "390.000đ", img: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Cá hồi áp chảo sốt bơ tỏi", price: "295.000đ", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Khoai tây nghiền phô mai", price: "85.000đ", img: "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "dong-phuong": {
+                            tags: ["Ăn gia đình", "Họp nhóm"],
+                            address: "88 Trần Hưng Đạo, Phường 7, Quận 5, TP.HCM",
+                            mapQuery: "88 Trần Hưng Đạo, Quận 5, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Vịt quay da giòn kiểu Hoa", price: "320.000đ", img: "https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Há cảo tôm tươi hấp xửng", price: "75.000đ", img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Đậu hũ Tứ Xuyên sốt cay", price: "110.000đ", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "moc-viet-quan": {
+                            tags: ["Ăn gia đình", "Họp nhóm"],
+                            address: "215 Sư Vạn Hạnh / Võ Văn Tần, Quận 3, TP.HCM",
+                            mapQuery: "Quận 3, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Cá lóc kho tộ nước dừa", price: "115.000đ", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Canh chua cá bông lau", price: "110.000đ", img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Gỏi cuốn tôm thịt mắm nêm", price: "65.000đ", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "sakura-table": {
+                            tags: ["Hẹn hò", "Tiếp khách"],
+                            address: "45 Thái Văn Lung, Phường Bến Nghé, Quận 1, TP.HCM",
+                            mapQuery: "45 Thái Văn Lung, Quận 1, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Set Sashimi cá hồi & cá trích", price: "260.000đ", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Cơm lươn Nhật nướng Unagi", price: "225.000đ", img: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Tempura tôm & rau củ", price: "140.000đ", img: "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "seoul-house": {
+                            tags: ["Họp nhóm", "Sinh nhật", "Tiệc/Hội nghị"],
+                            address: "102 Nguyễn Thị Thập, Phường Tân Phú, Quận 7, TP.HCM",
+                            mapQuery: "102 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Ba chỉ bò Mỹ nướng sốt Hàn", price: "175.000đ", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Cơm trộn bát đá Bulgogi", price: "125.000đ", img: "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Lẩu kim chi thịt heo", price: "240.000đ", img: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "ganh-que-buffet": {
+                            tags: ["Ăn gia đình", "Họp nhóm", "Tiệc/Hội nghị"],
+                            address: "152 Võ Văn Tần, Phường Võ Thị Sáu, Quận 3, TP.HCM",
+                            mapQuery: "152 Võ Văn Tần, Quận 3, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Bánh xèo miền Tây giòn rụm", price: "85.000đ", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Nem nướng Nha Trang", price: "95.000đ", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Chè khúc bạch nhãn nhục", price: "45.000đ", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "hai-san-ben-gio": {
+                            tags: ["Ăn gia đình", "Sinh nhật", "Tiếp khách"],
+                            address: "48 Kha Vạn Cân, Phường Hiệp Bình Chánh, TP. Thủ Đức, TP.HCM",
+                            mapQuery: "48 Kha Vạn Cân, TP. Thủ Đức, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Tôm sú nướng muối ớt xanh", price: "240.000đ", img: "https://images.unsplash.com/photo-1559737558-2bf22b72f2fb?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Cua biển rang me chua ngọt", price: "390.000đ", img: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Hàu sữa nướng phô mai", price: "130.000đ", img: "https://images.unsplash.com/photo-1535140728325-a4d3707eee61?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        },
+                        "lau-moc-garden": {
+                            tags: ["Ăn gia đình", "Họp nhóm", "Sinh nhật"],
+                            address: "86 Nguyễn Gia Trí, Phường 25, Quận Bình Thạnh, TP.HCM",
+                            mapQuery: "86 Nguyễn Gia Trí, Quận Bình Thạnh, TP. Hồ Chí Minh",
+                            dishes: [
+                                { name: "Lẩu nấm thiên nhiên thanh ngọt", price: "290.000đ", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Nấm đùi gà áp chảo bơ tỏi", price: "95.000đ", img: "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?auto=format&fit=crop&w=400&q=80" },
+                                { name: "Rau xanh vườn trồng theo mùa", price: "65.000đ", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80" }
+                            ]
+                        }
+                    };
 
-            // Khi bấm Xem chi tiết, đọc dữ liệu từ đúng thẻ nhà hàng đó.
-            document.getElementById("restaurantList")
-                .addEventListener("click", function (event) {
-                    const detailLink = event.target.closest('a[href="#chi-tiet"]');
+                    const searchInput = document.getElementById("searchInput");
+                    const searchButton = document.getElementById("searchButton");
+                    const areaFilter = document.getElementById("areaFilter");
+                    const cuisineFilter = document.getElementById("cuisineFilter");
+                    const priceFilter = document.getElementById("priceFilter");
+                    const purposeFilter = document.getElementById("purposeFilter");
+                    const restaurantItems = document.querySelectorAll(".restaurant-item");
+                    const noResults = document.getElementById("noResults");
+                    const cuisineButtons = document.querySelectorAll(".cuisine-chip");
+                    const detailSection = document.getElementById("chi-tiet");
+                    const detailImage = document.getElementById("detailImage");
+                    const mapPinInput = document.getElementById("mapPinInput");
+                    const detailMapIframe = document.getElementById("detailMapIframe");
+                    const detailMapAddress = document.getElementById("detailMapAddress");
 
-                    if (!detailLink) {
-                        return;
+                    function setMapLocation(query, addressLabel) {
+                        if (detailMapIframe) {
+                            detailMapIframe.src = "https://maps.google.com/maps?q=" + encodeURIComponent(query) + "&hl=vi&z=15&output=embed";
+                        }
+                        if (detailMapAddress) {
+                            detailMapAddress.textContent = addressLabel || query;
+                        }
                     }
 
-                    event.preventDefault();
+                    // Khi bấm Xem chi tiết, đọc dữ liệu từ đúng thẻ nhà hàng + 3 món + bản đồ Google Map.
+                    document.getElementById("restaurantList")
+                        .addEventListener("click", function (event) {
+                            const target = event.target instanceof Element ? event.target : null;
+                            const detailLink = target ? target.closest('a[href="#chi-tiet"]') : null;
 
-                    const restaurant = detailLink.closest(".restaurant-item");
-                    const name = restaurant.querySelector(".card-title").textContent.trim();
-                    const image = restaurant.querySelector(".card-img-top");
-                    const meta = restaurant.querySelector(".text-secondary.mb-2");
-                    const rating = restaurant.querySelector(".restaurant-rating");
-                    const description = restaurant.querySelector(".card-text");
-                    const price = Number(restaurant.dataset.price || 0);
-                    const purposes = (restaurant.dataset.purpose || "")
-                        .split("|")
-                        .join(" · ");
+                            if (!detailLink) {
+                                return;
+                            }
 
-                    detailImage.src = image.src;
-                    detailImage.alt = "Ảnh nhà hàng " + name;
+                            event.preventDefault();
 
-                    document.getElementById("detailName").textContent = name;
-                    document.getElementById("detailMeta").textContent =
-                        meta ? meta.textContent.trim() : "";
-                    document.getElementById("detailRating").textContent =
-                        rating ? rating.textContent.trim().replace(/\s+/g, " ") : "";
-                    document.getElementById("detailDescription").textContent =
-                        description ? description.textContent.trim() : "";
-                    document.getElementById("detailPrice").textContent = price
-                        ? (price * 1000).toLocaleString("vi-VN") + "đ/người"
-                        : "Chưa cập nhật";
-                    document.getElementById("detailPurpose").textContent =
-                        purposes || "Chưa cập nhật";
+                            const restaurant = detailLink.closest(".restaurant-item");
+                            if (!restaurant) return;
 
-                    detailSection.classList.remove("d-none");
-                    detailSection.scrollIntoView({
-                        behavior: "smooth",
-                        block: "nearest"
+                            const restId = restaurant.dataset.id || "";
+                            const extra = restaurantExtraData[restId] || {
+                                tags: (restaurant.dataset.purpose || "").split("|").filter(Boolean),
+                                address: restaurant.dataset.area || "TP. Hồ Chí Minh",
+                                mapQuery: restaurant.dataset.area || "TP. Hồ Chí Minh",
+                                dishes: []
+                            };
+
+                            const titleEl = restaurant.querySelector(".card-title");
+                            const name = titleEl && titleEl.textContent ? titleEl.textContent.trim() : "";
+                            const image = restaurant.querySelector(".card-img-top");
+                            const meta = restaurant.querySelector(".text-secondary.mb-2");
+                            const rating = restaurant.querySelector(".restaurant-rating");
+                            const description = restaurant.querySelector(".card-text");
+                            const price = Number(restaurant.dataset.price || 0);
+                            const purposes = (restaurant.dataset.purpose || "").split("|").join(" · ");
+
+                            if (detailImage && image) {
+                                detailImage.setAttribute("src", image.getAttribute("src") || "");
+                                detailImage.setAttribute("alt", "Ảnh nhà hàng " + name);
+                            }
+
+                            const nameEl = document.getElementById("detailName");
+                            if (nameEl) nameEl.textContent = name;
+
+                            const metaEl = document.getElementById("detailMeta");
+                            if (metaEl) metaEl.textContent = meta && meta.textContent ? meta.textContent.trim() : "";
+
+                            const ratingEl = document.getElementById("detailRating");
+                            if (ratingEl) ratingEl.textContent = rating && rating.textContent ? rating.textContent.trim().replace(/\s+/g, " ") : "";
+
+                            const descEl = document.getElementById("detailDescription");
+                            if (descEl) descEl.textContent = description && description.textContent ? description.textContent.trim() : "";
+
+                            const priceEl = document.getElementById("detailPrice");
+                            if (priceEl) priceEl.textContent = price ? (price * 1000).toLocaleString("vi-VN") + "đ/người" : "Chưa cập nhật";
+
+                            const purposeEl = document.getElementById("detailPurpose");
+                            if (purposeEl) purposeEl.textContent = purposes || "Chưa cập nhật";
+
+                            const tagsEl = document.getElementById("detailTags");
+                            if (tagsEl) {
+                                tagsEl.innerHTML = (extra.tags || []).map(function (t) {
+                                    return '<span class="ft-tag-pill">' + t + '</span>';
+                                }).join("");
+                            }
+
+                            const dishesEl = document.getElementById("detailDishes");
+                            if (dishesEl) {
+                                dishesEl.innerHTML = (extra.dishes || []).slice(0, 3).map(function (d) {
+                                    return '<div class="ft-dish-card">' +
+                                        '<img src="' + d.img + '" alt="' + d.name + '" />' +
+                                        '<div class="ft-dish-name">' + d.name + '</div>' +
+                                        '<div class="ft-dish-price">' + d.price + '</div>' +
+                                        '</div>';
+                                }).join("");
+                            }
+
+                            if (mapPinInput) {
+                                mapPinInput.value = extra.mapQuery;
+                            }
+                            setMapLocation(extra.mapQuery, extra.address);
+
+                            if (detailSection) {
+                                detailSection.classList.remove("d-none");
+                                detailSection.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "nearest"
+                                });
+                            }
+                        });
+
+                    // Ghim / cập nhật vị trí Google Map trực tiếp trong khung chi tiết.
+                    document.getElementById("btnPinMap")
+                        .addEventListener("click", function () {
+                            if (!mapPinInput) return;
+                            const q = mapPinInput.value.trim();
+                            if (!q) {
+                                alert("Vui lòng nhập địa chỉ hoặc tọa độ để ghim vị trí Google Map.");
+                                return;
+                            }
+                            setMapLocation(q, q);
+                        });
+
+                    // Đóng khung thông tin chi tiết đang hiển thị.
+                    document.getElementById("closeDetail")
+                        .addEventListener("click", function () {
+                            if (detailSection) {
+                                detailSection.classList.add("d-none");
+                            }
+                        });
+
+                    function priceMatches(price, range) {
+                        if (range === "") return true;
+                        if (range.endsWith("+")) return price >= Number(range.slice(0, -1));
+                        const parts = range.split("-");
+                        return price >= Number(parts[0]) && price < Number(parts[1]);
+                    }
+
+                    function updateCuisineButtons() {
+                        cuisineButtons.forEach(function (button) {
+                            const isSelected = button.dataset.cuisine === cuisineFilter.value;
+                            button.classList.toggle("active", isSelected);
+                            button.setAttribute("aria-pressed", isSelected);
+                        });
+                    }
+
+                    function filterRestaurants() {
+                        const searchText = searchInput.value.trim().toLowerCase();
+                        const selectedArea = areaFilter.value;
+                        const selectedCuisine = cuisineFilter.value;
+                        const selectedPrice = priceFilter.value;
+                        const selectedPurpose = purposeFilter.value;
+                        let visibleCount = 0;
+
+                        restaurantItems.forEach(function (item) {
+                            const matchesText = item.textContent.toLowerCase().includes(searchText);
+                            const matchesArea = selectedArea === "" || item.dataset.area === selectedArea;
+                            const matchesCuisine = selectedCuisine === "" || item.dataset.cuisine === selectedCuisine;
+                            const itemPrice = Number(item.dataset.price || 0);
+                            const matchesPrice = priceMatches(itemPrice, selectedPrice);
+                            const itemPurposes = (item.dataset.purpose || "").split("|");
+                            const matchesPurpose = selectedPurpose === "" || itemPurposes.includes(selectedPurpose);
+                            const shouldShow = matchesText && matchesArea && matchesCuisine && matchesPrice && matchesPurpose;
+
+                            item.classList.toggle("d-none", !shouldShow);
+                            if (shouldShow) visibleCount++;
+                        });
+
+                        noResults.classList.toggle("d-none", visibleCount > 0);
+                    }
+
+                    searchButton.addEventListener("click", filterRestaurants);
+                    searchInput.addEventListener("input", filterRestaurants);
+                    areaFilter.addEventListener("change", filterRestaurants);
+                    cuisineFilter.addEventListener("change", function () {
+                        updateCuisineButtons();
+                        filterRestaurants();
                     });
-                });
+                    priceFilter.addEventListener("change", filterRestaurants);
+                    purposeFilter.addEventListener("change", filterRestaurants);
 
-            // Đóng khung thông tin chi tiết đang hiển thị.
-            document.getElementById("closeDetail")
-                .addEventListener("click", function () {
-                    detailSection.classList.add("d-none");
-                });
-
-            // Kiểm tra giá của nhà hàng có nằm trong khoảng giá đã chọn không.
-            function priceMatches(price, range) {
-                if (range === "") {
-                    return true;
-                }
-
-                if (range.endsWith("+")) {
-                    return price >= Number(range.slice(0, -1));
-                }
-
-                const parts = range.split("-");
-                const min = Number(parts[0]);
-                const max = Number(parts[1]);
-
-                return price >= min && price < max;
-            }
-
-            // Đồng bộ trạng thái sáng/tắt của các nút ẩm thực.
-            function updateCuisineButtons() {
-                cuisineButtons.forEach(function (button) {
-                    const isSelected =
-                        button.dataset.cuisine === cuisineFilter.value;
-
-                    button.classList.toggle("active", isSelected);
-                    button.setAttribute("aria-pressed", isSelected);
-                });
-            }
-
-            // Lọc nhà hàng theo từ khóa, khu vực, ẩm thực, giá và mục đích.
-            function filterRestaurants() {
-                const searchText = searchInput.value.trim().toLowerCase();
-                const selectedArea = areaFilter.value;
-                const selectedCuisine = cuisineFilter.value;
-                const selectedPrice = priceFilter.value;
-                const selectedPurpose = purposeFilter.value;
-                let visibleCount = 0;
-
-                restaurantItems.forEach(function (item) {
-                    const matchesText =
-                        item.textContent.toLowerCase().includes(searchText);
-
-                    const matchesArea =
-                        selectedArea === "" ||
-                        item.dataset.area === selectedArea;
-
-                    const matchesCuisine =
-                        selectedCuisine === "" ||
-                        item.dataset.cuisine === selectedCuisine;
-
-                    const itemPrice = Number(item.dataset.price || 0);
-                    const matchesPrice =
-                        priceMatches(itemPrice, selectedPrice);
-
-                    const itemPurposes =
-                        (item.dataset.purpose || "").split("|");
-
-                    const matchesPurpose =
-                        selectedPurpose === "" ||
-                        itemPurposes.includes(selectedPurpose);
-
-                    const shouldShow =
-                        matchesText &&
-                        matchesArea &&
-                        matchesCuisine &&
-                        matchesPrice &&
-                        matchesPurpose;
-
-                    item.classList.toggle("d-none", !shouldShow);
-
-                    if (shouldShow) {
-                        visibleCount++;
-                    }
-                });
-
-                noResults.classList.toggle("d-none", visibleCount > 0);
-            }
-
-            // Kết nối các điều khiển tìm kiếm và lọc với hàm lọc danh sách.
-            searchButton.addEventListener("click", filterRestaurants);
-            searchInput.addEventListener("input", filterRestaurants);
-            areaFilter.addEventListener("change", filterRestaurants);
-            cuisineFilter.addEventListener("change", function () {
-                updateCuisineButtons();
-                filterRestaurants();
-            });
-            priceFilter.addEventListener("change", filterRestaurants);
-            purposeFilter.addEventListener("change", filterRestaurants);
-
-            cuisineButtons.forEach(function (button) {
-                button.addEventListener("click", function () {
-                    const selected = button.dataset.cuisine;
-
-                    cuisineFilter.value =
-                        cuisineFilter.value === selected ? "" : selected;
-
-                    updateCuisineButtons();
-                    filterRestaurants();
-                });
-            });
-
-            // Đổi trạng thái yêu thích trên giao diện.
-            document.querySelectorAll(".favorite-button").forEach(function (button) {
-                button.addEventListener("click", function () {
-                    const isSaved = button.dataset.saved === "true";
-                    button.dataset.saved = isSaved ? "false" : "true";
-                    button.textContent = isSaved ? "♡ Yêu thích" : "♥ Đã lưu";
-                    button.classList.toggle("btn-danger", !isSaved);
-                    button.classList.toggle("btn-outline-danger", isSaved);
-                });
-            });
-
-            // Lấy các thành phần của biểu mẫu đặt bàn ba bước.
-            const bookingForm = document.getElementById("bookingForm");
-            const bookingPanels = bookingForm.querySelectorAll("[data-step-panel]");
-            const bookingIndicators = bookingForm.querySelectorAll("[data-step-indicator]");
-            const bookingProgressFill = document.getElementById("bookingProgressFill");
-            const bookingDate = document.getElementById("bookingDate");
-            const bookingRestaurant = document.getElementById("bookingRestaurant");
-            const bookingTime = document.getElementById("bookingTime");
-            const customBookingTime = document.getElementById("customBookingTime");
-            const bookingTimeError = document.getElementById("bookingTimeError");
-            const bookingMessage = document.getElementById("bookingMessage");
-            // Đổ tên các nhà hàng trên trang vào danh sách chọn đặt bàn.
-            restaurantItems.forEach(function (item) {
-                const nameElement = item.querySelector(".card-title");
-                const metaElement = item.querySelector(".text-secondary.mb-2");
-
-                if (!nameElement) return;
-
-                const name = nameElement.textContent.trim();
-                const option = document.createElement("option");
-
-                option.value = name;
-                option.textContent = metaElement
-                    ? name + " — " + metaElement.textContent.trim()
-                    : name;
-
-                bookingRestaurant.appendChild(option);
-            });
-            let currentBookingStep = 1;
-
-            // Không cho khách chọn ngày đặt bàn đã qua.
-            const today = new Date();
-            const localDate = new Date(
-                today.getTime() - today.getTimezoneOffset() * 60000
-            ).toISOString().split("T")[0];
-            bookingDate.min = localDate;
-
-            // Hiện bước hiện tại và cập nhật thanh tiến trình.
-            function showBookingStep(step) {
-                currentBookingStep = step;
-
-                bookingPanels.forEach(function (panel) {
-                    panel.classList.toggle("d-none", Number(panel.dataset.stepPanel) !== step);
-                });
-
-                bookingIndicators.forEach(function (indicator) {
-                    const indicatorStep = Number(indicator.dataset.stepIndicator);
-                    indicator.classList.toggle("is-active", indicatorStep === step);
-                    indicator.classList.toggle("is-complete", indicatorStep < step);
-
-                    if (indicatorStep === step) {
-                        indicator.setAttribute("aria-current", "step");
-                    } else {
-                        indicator.removeAttribute("aria-current");
-                    }
-                });
-
-                bookingProgressFill.style.width = ((step - 1) * 50) + "%";
-
-                if (step === 3) {
-                    updateBookingSummary();
-                }
-            }
-
-            // Kiểm tra dữ liệu bắt buộc trước khi chuyển sang bước kế tiếp.
-            function validateBookingStep(step) {
-                const panel = bookingForm.querySelector('[data-step-panel="' + step + '"]');
-                const requiredFields = panel.querySelectorAll("input[required], textarea[required], select[required]");
-
-                for (const field of requiredFields) {
-                    if (!field.checkValidity()) {
-                        field.reportValidity();
-                        return false;
-                    }
-                }
-
-                if (step === 1) {
-                    if (!bookingTime.value) {
-                        bookingTimeError.classList.remove("d-none");
-                        return false;
-                    }
-
-                    if (customBookingTime.value && !customBookingTime.checkValidity()) {
-                        customBookingTime.reportValidity();
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            // Hiển thị thông tin khách đã nhập ở bước xác nhận.
-            function updateBookingSummary() {
-                const dateValue = bookingDate.value;
-                const formattedDate = dateValue
-                    ? new Date(dateValue + "T00:00:00").toLocaleDateString("vi-VN", {
-                        weekday: "long", day: "2-digit", month: "2-digit", year: "numeric"
-                    })
-                    : "Chưa chọn";
-
-                document.getElementById("summaryDate").textContent = formattedDate;
-                document.getElementById("summaryRestaurant").textContent = bookingRestaurant.value || "Chưa chọn";
-                document.getElementById("summaryTime").textContent = bookingTime.value || "Chưa chọn";
-                document.getElementById("summaryGuests").textContent = document.getElementById("guestCount").value + " khách";
-                document.getElementById("summaryName").textContent = document.getElementById("bookingName").value.trim();
-                document.getElementById("summaryPhone").textContent = document.getElementById("bookingPhone").value.trim();
-                document.getElementById("summarySpecial").textContent = document.getElementById("specialRequest").value.trim() || "Không có";
-            }
-
-            document.querySelectorAll(".booking-time-slot").forEach(function (button) {
-                button.addEventListener("click", function () {
-                    document.querySelectorAll(".booking-time-slot").forEach(function (option) {
-                        option.classList.remove("is-selected");
-                        option.setAttribute("aria-pressed", "false");
+                    cuisineButtons.forEach(function (button) {
+                        button.addEventListener("click", function () {
+                            const selected = button.dataset.cuisine;
+                            cuisineFilter.value = cuisineFilter.value === selected ? "" : selected;
+                            updateCuisineButtons();
+                            filterRestaurants();
+                        });
                     });
 
-                    button.classList.add("is-selected");
-                    button.setAttribute("aria-pressed", "true");
-                    customBookingTime.value = "";
-                    bookingTime.value = button.dataset.time;
-                    bookingTimeError.classList.add("d-none");
-                });
-            });
-            // Nếu khách tự nhập giờ, bỏ chọn giờ có sẵn và cập nhật giờ đặt.
-            customBookingTime.addEventListener("input", function () {
-                bookingTime.value = this.value;
+                    document.querySelectorAll(".favorite-button").forEach(function (button) {
+                        button.addEventListener("click", function () {
+                            const isSaved = button.dataset.saved === "true";
+                            button.dataset.saved = isSaved ? "false" : "true";
+                            button.textContent = isSaved ? "♡ Yêu thích" : "♥ Đã lưu";
+                            button.classList.toggle("btn-danger", !isSaved);
+                            button.classList.toggle("btn-outline-danger", isSaved);
+                        });
+                    });
 
-                if (this.value) {
+                    // Biểu mẫu đặt bàn ba bước
+                    const bookingForm = document.getElementById("bookingForm");
+                    const bookingPanels = bookingForm.querySelectorAll("[data-step-panel]");
+                    const bookingIndicators = bookingForm.querySelectorAll("[data-step-indicator]");
+                    const bookingProgressFill = document.getElementById("bookingProgressFill");
+                    const bookingDate = document.getElementById("bookingDate");
+                    const bookingRestaurant = document.getElementById("bookingRestaurant");
+                    const bookingTime = document.getElementById("bookingTime");
+                    const customBookingTime = document.getElementById("customBookingTime");
+                    const bookingTimeError = document.getElementById("bookingTimeError");
+                    const bookingMessage = document.getElementById("bookingMessage");
+
+                    restaurantItems.forEach(function (item) {
+                        const nameElement = item.querySelector(".card-title");
+                        const metaElement = item.querySelector(".text-secondary.mb-2");
+                        if (!nameElement) return;
+
+                        const name = nameElement.textContent.trim();
+                        const option = document.createElement("option");
+                        option.value = name;
+                        option.textContent = metaElement ? name + " — " + metaElement.textContent.trim() : name;
+                        bookingRestaurant.appendChild(option);
+                    });
+
+                    let currentBookingStep = 1;
+
+                    const today = new Date();
+                    const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+                    bookingDate.min = localDate;
+
+                    function showBookingStep(step) {
+                        currentBookingStep = step;
+
+                        bookingPanels.forEach(function (panel) {
+                            panel.classList.toggle("d-none", Number(panel.dataset.stepPanel) !== step);
+                        });
+
+                        bookingIndicators.forEach(function (indicator) {
+                            const indicatorStep = Number(indicator.dataset.stepIndicator);
+                            indicator.classList.toggle("is-active", indicatorStep === step);
+                            indicator.classList.toggle("is-complete", indicatorStep < step);
+
+                            if (indicatorStep === step) {
+                                indicator.setAttribute("aria-current", "step");
+                            } else {
+                                indicator.removeAttribute("aria-current");
+                            }
+                        });
+
+                        bookingProgressFill.style.width = ((step - 1) * 50) + "%";
+
+                        if (step === 3) {
+                            updateBookingSummary();
+                        }
+                    }
+
+                    function validateBookingStep(step) {
+                        const panel = bookingForm.querySelector('[data-step-panel="' + step + '"]');
+                        const requiredFields = panel.querySelectorAll("input[required], textarea[required], select[required]");
+
+                        for (const field of requiredFields) {
+                            if (!field.checkValidity()) {
+                                field.reportValidity();
+                                return false;
+                            }
+                        }
+
+                        if (step === 1) {
+                            if (!bookingTime.value) {
+                                bookingTimeError.classList.remove("d-none");
+                                return false;
+                            }
+
+                            if (customBookingTime.value && !customBookingTime.checkValidity()) {
+                                customBookingTime.reportValidity();
+                                return false;
+                            }
+                        }
+
+                        return true;
+                    }
+
+                    function updateBookingSummary() {
+                        const dateValue = bookingDate.value;
+                        const formattedDate = dateValue
+                            ? new Date(dateValue + "T00:00:00").toLocaleDateString("vi-VN", {
+                                weekday: "long", day: "2-digit", month: "2-digit", year: "numeric"
+                            })
+                            : "Chưa chọn";
+
+                        document.getElementById("summaryDate").textContent = formattedDate;
+                        document.getElementById("summaryRestaurant").textContent = bookingRestaurant.value || "Chưa chọn";
+                        document.getElementById("summaryTime").textContent = bookingTime.value || "Chưa chọn";
+                        document.getElementById("summaryGuests").textContent = document.getElementById("guestCount").value + " khách";
+                        document.getElementById("summaryName").textContent = document.getElementById("bookingName").value.trim();
+                        document.getElementById("summaryPhone").textContent = document.getElementById("bookingPhone").value.trim();
+                        document.getElementById("summarySpecial").textContent = document.getElementById("specialRequest").value.trim() || "Không có";
+                    }
+
                     document.querySelectorAll(".booking-time-slot").forEach(function (button) {
-                        button.classList.remove("is-selected");
-                        button.setAttribute("aria-pressed", "false");
+                        button.addEventListener("click", function () {
+                            document.querySelectorAll(".booking-time-slot").forEach(function (option) {
+                                option.classList.remove("is-selected");
+                                option.setAttribute("aria-pressed", "false");
+                            });
+
+                            button.classList.add("is-selected");
+                            button.setAttribute("aria-pressed", "true");
+                            customBookingTime.value = "";
+                            bookingTime.value = button.dataset.time;
+                            bookingTimeError.classList.add("d-none");
+                        });
                     });
 
-                    bookingTimeError.classList.add("d-none");
-                }
-            });
-            // Xử lý nút Tiếp tục sau khi dữ liệu của bước hiện tại hợp lệ.
-            bookingForm.querySelectorAll("[data-booking-next]").forEach(function (button) {
-                button.addEventListener("click", function () {
-                    if (validateBookingStep(currentBookingStep)) {
-                        showBookingStep(Math.min(currentBookingStep + 1, 3));
+                    customBookingTime.addEventListener("input", function () {
+                        bookingTime.value = this.value;
+
+                        if (this.value) {
+                            document.querySelectorAll(".booking-time-slot").forEach(function (button) {
+                                button.classList.remove("is-selected");
+                                button.setAttribute("aria-pressed", "false");
+                            });
+
+                            bookingTimeError.classList.add("d-none");
+                        }
+                    });
+
+                    bookingForm.querySelectorAll("[data-booking-next]").forEach(function (button) {
+                        button.addEventListener("click", function () {
+                            if (validateBookingStep(currentBookingStep)) {
+                                showBookingStep(Math.min(currentBookingStep + 1, 3));
+                            }
+                        });
+                    });
+
+                    bookingForm.querySelectorAll("[data-booking-back]").forEach(function (button) {
+                        button.addEventListener("click", function () {
+                            showBookingStep(Math.max(currentBookingStep - 1, 1));
+                        });
+                    });
+
+                    const bookingReviewBox = document.getElementById("bookingReviewBox");
+                    const bookingSuccessPanel = document.getElementById("bookingSuccessPanel");
+
+                    function resetBookingFormState() {
+                        bookingForm.reset();
+                        bookingTime.value = "";
+                        bookingTimeError.classList.add("d-none");
+                        bookingMessage.classList.add("d-none");
+                        if (bookingReviewBox) {
+                            bookingReviewBox.classList.remove("d-none");
+                        }
+                        if (bookingSuccessPanel) {
+                            bookingSuccessPanel.classList.add("d-none");
+                        }
+
+                        document.querySelectorAll(".booking-time-slot").forEach(function (button) {
+                            button.classList.remove("is-selected");
+                            button.setAttribute("aria-pressed", "false");
+                        });
+
+                        document.getElementById("confirmBooking").disabled = false;
+
+                        [
+                            "summaryRestaurant",
+                            "summaryDate",
+                            "summaryTime",
+                            "summaryGuests",
+                            "summaryName",
+                            "summaryPhone",
+                            "summarySpecial",
+                            "successRestaurant",
+                            "successDate",
+                            "successTime",
+                            "successGuests",
+                            "successName",
+                            "successPhone",
+                            "successSpecial"
+                        ].forEach(function (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.textContent = "";
+                        });
+
+                        showBookingStep(1);
                     }
-                });
-            });
 
-            // Quay lại bước trước mà vẫn giữ thông tin đã nhập.
-            bookingForm.querySelectorAll("[data-booking-back]").forEach(function (button) {
-                button.addEventListener("click", function () {
-                    showBookingStep(Math.max(currentBookingStep - 1, 1));
-                });
-            });
-            // Xóa thông tin đặt bàn và đưa biểu mẫu về bước đầu.
-            document.getElementById("restartBooking")
-                .addEventListener("click", function () {
-                    bookingForm.reset();
-                    bookingTime.value = "";
-                    bookingTimeError.classList.add("d-none");
-                    bookingMessage.classList.add("d-none");
+                    document.getElementById("restartBooking")
+                        .addEventListener("click", function () {
+                            resetBookingFormState();
+                            document.getElementById("dat-ban").scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        });
 
-                    document.querySelectorAll(".booking-time-slot").forEach(function (button) {
-                        button.classList.remove("is-selected");
-                        button.setAttribute("aria-pressed", "false");
+                    document.getElementById("newBookingBtn")
+                        .addEventListener("click", function () {
+                            resetBookingFormState();
+                            document.getElementById("dat-ban").scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        });
+
+                    bookingForm.addEventListener("submit", function (event) {
+                        event.preventDefault();
+
+                        if (currentBookingStep !== 3) {
+                            return;
+                        }
+
+                        const randomCode = "FT" + Math.floor(1000 + Math.random() * 9000);
+                        const codeEl = document.getElementById("successBookingCode");
+                        if (codeEl) {
+                            codeEl.textContent = "Mã đặt bàn: #" + randomCode;
+                        }
+
+                        document.getElementById("successRestaurant").textContent =
+                            document.getElementById("summaryRestaurant").textContent;
+                        document.getElementById("successDate").textContent =
+                            document.getElementById("summaryDate").textContent;
+                        document.getElementById("successTime").textContent =
+                            document.getElementById("summaryTime").textContent;
+                        document.getElementById("successGuests").textContent =
+                            document.getElementById("summaryGuests").textContent;
+                        document.getElementById("successName").textContent =
+                            document.getElementById("summaryName").textContent;
+                        document.getElementById("successPhone").textContent =
+                            document.getElementById("summaryPhone").textContent;
+                        document.getElementById("successSpecial").textContent =
+                            document.getElementById("summarySpecial").textContent;
+
+                        if (bookingReviewBox) {
+                            bookingReviewBox.classList.add("d-none");
+                        }
+                        if (bookingSuccessPanel) {
+                            bookingSuccessPanel.classList.remove("d-none");
+                            bookingSuccessPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                        }
                     });
-
-                    document.getElementById("confirmBooking").disabled = false;
-
-                    [
-                        "summaryRestaurant",
-                        "summaryDate",
-                        "summaryTime",
-                        "summaryGuests",
-                        "summaryName",
-                        "summaryPhone",
-                        "summarySpecial"
-                    ].forEach(function (id) {
-                        document.getElementById(id).textContent = "";
-                    });
-
-                    showBookingStep(1);
-
-                    document.getElementById("dat-ban").scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                });
-
-            // Đây là xác nhận mẫu trên giao diện; hiện chưa lưu vào cơ sở dữ liệu.
-            bookingForm.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                if (currentBookingStep !== 3) {
-                    return;
-                }
-
-                bookingMessage.classList.remove("d-none");
-                bookingMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                document.getElementById("confirmBooking").disabled = true;
-            });
-        })();
+                })();
     </script>
 }
